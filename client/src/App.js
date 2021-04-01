@@ -21,7 +21,7 @@ function App () {
       <button onClick={load}>
         testing fetch
       </button>
-      jwk
+      jwk is cool
     </div>
   );
 }
