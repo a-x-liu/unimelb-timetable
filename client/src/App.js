@@ -21,7 +21,7 @@ function App () {
       <button onClick={load}>
         testing fetch
       </button>
-      jwk is cool
+      jin woo kim's 3 macbooks
     </div>
   );
 }
