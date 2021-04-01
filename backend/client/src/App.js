@@ -21,7 +21,7 @@ function App () {
       <button onClick={load}>
         testing fetch
       </button>
-      HELLO THERE
+      aeruoghuioasrhgorah
     </div>
   );
 }
