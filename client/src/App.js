@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Button from '@material-ui/core/Button';
 
 function App () {
   const options = {
@@ -18,9 +19,9 @@ function App () {
 
   return (
     <div>
-      <button onClick={load}>
+      <Button variant="contained" color="primary" onClick={load}>
         testing fetch
-      </button>
+      </Button>
       jin woo kim's 3 macbooks
     </div>
   );
