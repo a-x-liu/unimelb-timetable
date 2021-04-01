@@ -10,10 +10,10 @@ function App () {
   }
 
   async function load () {
-    console.log("hello");
     const response = await fetch('/test', options);
     const data = await response.json();
     console.log(data);
+    window.localStorage.setItem('test', "hoping this shit works");
   }
 
   return (
