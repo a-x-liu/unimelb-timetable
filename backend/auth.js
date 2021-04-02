@@ -3,6 +3,9 @@ let database = require('./database.js');
 let users = database.users;
 let timetables = database.users;
 let events = database.users;
+let user = database.user;
+let timetable = database.timetable;
+let event = databse.event;
 
 exports.authLogin = function(authName, authPassword) {
     console.log('auth login');
