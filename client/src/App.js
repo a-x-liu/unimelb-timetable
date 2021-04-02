@@ -22,7 +22,7 @@ function App () {
       <Button variant="contained" color="primary" onClick={load}>
         testing fetch
       </Button>
-      jin woo kim's 3 macbooks
+      jin woo kim's 3
     </div>
   );
 }
