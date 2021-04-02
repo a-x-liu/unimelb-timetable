@@ -5,7 +5,7 @@ let timetables = database.users;
 let events = database.users;
 let user = database.user;
 let timetable = database.timetable;
-let event = databse.event;
+let event = database.event;
 
 exports.userProfile = function(userId) {
     console.log('user profile');
