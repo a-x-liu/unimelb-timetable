@@ -36,3 +36,34 @@
     transform: rotate(360deg);
   }
 }
+
+.loginPage {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loginButton {
+  margin-top: 10px;
+}
+
+.loginPage h2 {
+  margin-top: 0px;
+  margin-bottom: 13px;
+}
+
+.loginButton button {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+#loginForm TextField {
+  margin-right: 5px;
+}
+
+.dashboardContainer {
+  display: 'flex';
+  justify-content: center;
+  align-items: center;
+}
