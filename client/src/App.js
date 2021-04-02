@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Register from './components/Register';
 
 import {
   BrowserRouter as Router,
@@ -77,7 +78,7 @@ function App () {
       <Router>
       <Switch>
         <Route path="/register">
-          <LoginSection />
+          <Register />
         </Route>
         <Route path="/login">
           <LoginSection />
