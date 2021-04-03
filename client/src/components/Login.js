@@ -63,23 +63,25 @@ const useStyles = makeStyles((theme) => ({
                 <Typography variant="h6" className={classes.title}>
                     Prolvan Timetabling
                 </Typography>
-                <Button variant="h9" className={classes.title} style={{maxWidth: '150px'}}>
+                <Button variant="h9" className={classes.title} style={{ maxWidth: '150px' }}>
                     My Timetables
                 </Button>
-                <Button variant="h9" className={classes.title} style={{maxWidth: '150px'}}>
+                <Button variant="h9" className={classes.title} style={{ maxWidth: '150px' }}>
                     About us
                 </Button>
                 {auth && (
                     <div>
-                    <IconButton
-                        aria-label="account of current user"
-                        aria-controls="menu-appbar"
-                        aria-haspopup="true"
-                        onClick={handleMenu}
-                        color="inherit"
-                    >
-                        <AccountCircle />
-                    </IconButton>
+                    <Link to="/profile" style={{ color: 'white' }}>
+                        <IconButton
+                            aria-label="account of current user"
+                            aria-controls="menu-appbar"
+                            aria-haspopup="true"
+                            onClick={handleMenu}
+                            color="inherit"
+                        >
+                            <AccountCircle />
+                        </IconButton>
+                    </Link>
                     {/* <Menu
                         id="menu-appbar"
                         anchorEl={anchorEl}
@@ -102,7 +104,11 @@ const useStyles = makeStyles((theme) => ({
                 </Toolbar>
             </AppBar>
          </div>
-         <Fab color="secondary" aria-label="add" id="addTableButton">
+         <Fab color="secondary" aria-label="add" id="addTableButton" 
+                style={{
+                marginTop: '50%',
+                marginLeft: '90%' }}
+            >
             <AddIcon />
          </Fab>
 
