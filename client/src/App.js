@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
 import Register from './components/Register';
-import Login from './components/Login';
 import Profile from './components/Profile';
 import Timetables from './components/Timetables';
 import About from './components/About';
+import LogoBlue from './assets/LogoBlue.png';
+import { AnimatePresence,  motion } from "framer-motion";
 
 import {
   BrowserRouter as Router,
@@ -53,8 +54,9 @@ function LoginSection () {
   }
 
   return (
-    <div id="container">
+    <motion.div id="container" initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
       <div id="info"> 
+      
         <h2> Prolvan Timetabling</h2>
         <div> This is a timetabling service brought to you by Prolvan and co!</div>
       </div>
@@ -64,7 +66,7 @@ function LoginSection () {
           <TextField id="loginUsername" label="Username" variant="outlined" style={username}/>
           <TextField id="loginPassword" label="Password" variant="outlined" type="password" style={password} />
           <div className="loginButton">
-            <Link to="/login" style={{ textDecoration: 'none' }}>
+            <Link to="/timetables" style={{ textDecoration: 'none' }}>
               <Button variant="contained" color="primary">
                 Login
               </Button>
@@ -90,7 +92,7 @@ function LoginSection () {
           }}
         />
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -98,12 +100,10 @@ function App () {
   return (
     <div>
       <Router>
+      <AnimatePresence>
       <Switch>
         <Route path="/register">
           <Register />
-        </Route>
-        <Route path="/login">
-          <Login />
         </Route>
         <Route path="/profile">
           <Profile />
@@ -118,6 +118,7 @@ function App () {
           <LoginSection />
         </Route>
       </Switch>
+      </AnimatePresence>
     </Router>
     </div>
   );

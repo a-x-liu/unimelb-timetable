@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
         borderStyle: 'solid',
         borderRadius: '10px',
         borderWidth: '1px',
-        backgroundColor: 'white',
+        backgroundColor: '#FED5AF',
 
 
         height: '300px',

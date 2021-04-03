@@ -17,6 +17,7 @@ import Menu from '@material-ui/core/Menu';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import Avatar from '@material-ui/core/Avatar';
+import { AnimatePresence,  motion } from "framer-motion";
 import {
     VictoryChart,
     VictoryAxis,
@@ -66,19 +67,14 @@ export default function () {
       setAnchorEl(null);
     };
     return (
-        <div>
+        <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
            <div className={classes.root}>
                 <AppBar position="static" style={{boxShadow:'none'}}>
                     <Toolbar>
-                    <Link to="/login" style={{color: 'black', textDecoration: 'none', flex:1 }}>
+                    <Link to="/timetables" style={{color: 'black', textDecoration: 'none', flex:1 }}>
                         <Typography variant="h6" className={classes.title} style={{ fontWeight: "bold"}}>
                             Prolvan Timetabling
                         </Typography>
-                    </Link>
-                    <Link to="/timetables" style={{ color: 'black', textDecoration: 'none'}}>
-                        <Button variant="h9" className={classes.title} style={{ maxWidth: '150px' }}>
-                            <span className="menuElement">My Timetables</span>
-                        </Button>
                     </Link>
                     <Link to="/about" style={{ color: 'black', textDecoration: 'none'}}>
                         <Button variant="h9" className={classes.title} style={{ maxWidth: '150px' }}>
@@ -176,6 +172,6 @@ export default function () {
                     </VictoryChart>
                 </div>         
             </div>
-        </div>
+        </motion.div>
     );
 }
