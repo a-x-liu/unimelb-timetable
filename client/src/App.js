@@ -1,6 +1,9 @@
 import React from 'react';
 import './App.css';
 import Register from './components/Register';
+import Event from './components/Event';
+
+import Timetable from './components/Timetable'
 
 import {
   BrowserRouter as Router,
@@ -78,13 +81,13 @@ function App () {
       <Router>
       <Switch>
         <Route path="/register">
-          <Register />
+          <Event />
         </Route>
         <Route path="/login">
           <LoginSection />
         </Route>
         <Route path="/dashboard">
-          <LoginSection />
+          <Timetable />
         </Route>
         <Route path="/">
           <LoginSection />
