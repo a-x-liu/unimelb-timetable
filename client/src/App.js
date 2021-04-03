@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Register from './components/Register';
 import Login from './components/Login';
+import Profile from './components/Profile';
 
 import {
   BrowserRouter as Router,
@@ -102,8 +103,8 @@ function App () {
         <Route path="/login">
           <Login />
         </Route>
-        <Route path="/dashboard">
-          <LoginSection />
+        <Route path="/profile">
+          <Profile />
         </Route>
         <Route path="/">
           <LoginSection />
