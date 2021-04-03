@@ -2,6 +2,7 @@ import React from 'react';
 import '../App.css';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Wave from 'react-wavify';
 
 import {
     BrowserRouter as Router,
@@ -31,11 +32,13 @@ const username = {
 export default function () {
     return (
         <div>
-            <Link to="/" style={{ textDecoration: 'none' }}>
-                <Button variant="contained" color="primary">
-                    Return Home
-                </Button>
-            </Link> 
+            <div id="homeButton">
+                <Link to="/" style={{ textDecoration: 'none' }}>
+                    <Button variant="contained" color="primary">
+                        Return Home
+                    </Button>
+                </Link>
+            </div>
             <div className="RegisterPage">
                 <h2>Register here!</h2>
                 <form>
@@ -50,6 +53,19 @@ export default function () {
                     
                     </div>
                 </form>
+            </div>
+            <div id="wave">
+                <Wave fill='#D3EAFF'
+                    paused={false}
+                    options={{
+                        position: 'fixed',
+                        bottom: '0px',
+                        height: 20,
+                        amplitude: 35,
+                        speed: 0.2,
+                        points: 4
+                    }}
+                />
             </div>
         </div>  
     );
