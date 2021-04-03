@@ -37,6 +37,12 @@
   width: 325px;
 }
 
+#wave {
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+}
+
 .RegisterPage {
   position: fixed;
   top: 50%;
@@ -85,6 +91,9 @@
 html{
   background-color: #f2f5f0;
   height: 100%;
+  width: 100%;
+  margin: 0;
+  padding:0;
 }
 
 #wrapper {
@@ -100,9 +109,11 @@ html{
 }
 
 
-#wave {
+/* #wave {
   margin-top: 706px;
-}
+  display: absolute;
+  bottom: 0px;
+} */
 
 @media (max-width: 1200px){
   #container{
@@ -124,15 +135,14 @@ html{
 
 #container {
   display: flex;
-}
-
-#wave {
-  width: 100%;
+  height: 100vh;
+  position: relative;
 }
 
 #homeButton {
   float: left;
-  margin-top: -706px;
+  position: absolute;
+  top: 0;
 }
 
 #banner {
@@ -152,4 +162,39 @@ html{
 
 .menuButtons{
   float: right;
+}
+
+#statistics {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.graphs {
+  float: right;
+  width: 45vh;
+}
+
+#profileName {
+  margin-top: 5%;
+  text-align: center;
+}
+
+#profilePic {
+  height: 80px;
+  width: 80px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+#username {
+  margin-top: 0;
+  padding-bottom: 1%;
+  margin-bottom: 0;
+}
+
+.graphTitle {
+  text-align: center;
+  font-size: 200%;
+  margin-bottom: 0;
 }
