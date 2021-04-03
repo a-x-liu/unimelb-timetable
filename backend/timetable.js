@@ -49,6 +49,14 @@ exports.timetableDelete = function(token, userId, userID, timetableId) {
 
 exports.timetableAddEvent = function(token, userId, timetableId, eventId) {
     // console.log('timetable add event');
+    tokenCheck(token, con, userId, async function(result) {
+        if (!result) {
+            console.log('Invalid token');
+            return;
+        } else {
+            
+        }
+    });
 };
 
 exports.timetableDeleteEvent = function(token, timetableId, eventId) {
