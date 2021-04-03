@@ -1,5 +1,10 @@
 import React from 'react';
 import './App.css';
+import Register from './components/Register';
+import Login from './components/Login';
+import Profile from './components/Profile';
+import Timetables from './components/Timetables';
+import About from './components/About';
 
 import {
   BrowserRouter as Router,
@@ -12,6 +17,9 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import { lightBlue } from '@material-ui/core/colors';
+import {  makeStyles } from'@material-ui/core/styles';
+import Wave from 'react-wavify';
 
 function Alert (props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -30,29 +38,38 @@ function LoginSection () {
 
   const username = {
     marginRight: '5px',
-    width: '210px'
+    width: '90%',
+    marginBottom: '2.5%'
   }
 
   const password = {
-    width: '210px'
+    width: '90%',
+    height: '120%'
   }
+
 
   async function submitLogin (e) {
     console.log("we are submitting");
   }
 
   return (
-    <div>
-      <div className="loginPage" id="section">
+    <div id="container">
+      <div id="info"> 
+        <h2> Prolvan Timetabling</h2>
+        <div> This is a timetabling service brought to you by Prolvan and co!</div>
+      </div>
+      <div className="loginPage">
         <h2>Login</h2>
         <form onSubmit={submitLogin}>
-          <TextField id="loginEmail" label="Email" variant="outlined" style={username}/>
+          <TextField id="loginUsername" label="Username" variant="outlined" style={username}/>
           <TextField id="loginPassword" label="Password" variant="outlined" type="password" style={password} />
           <div className="loginButton">
-            <Button variant="contained" color="primary" type="submit">
-              Login
-            </Button>
-            <Link to="/register">
+            <Link to="/login" style={{ textDecoration: 'none' }}>
+              <Button variant="contained" color="primary">
+                Login
+              </Button>
+            </Link>
+            <Link to="/register" style={{ textDecoration: 'none' }}>
               <Button variant="contained" color="secondary">
                 Register
               </Button>
@@ -60,12 +77,18 @@ function LoginSection () {
           </div>
         </form>
       </div>
-      <div>
-        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-          <Alert onClose={handleClose} severity="success">
-            This is a success message!
-          </Alert>
-        </Snackbar>
+      <div id="wave">
+        <Wave fill='#D3EAFF'
+          paused={false}
+          options={{
+            position: 'fixed',
+            bottom: '0px',
+            height: 20,
+            amplitude: 35,
+            speed: 0.2,
+            points: 4
+          }}
+        />
       </div>
     </div>
   );
@@ -77,13 +100,19 @@ function App () {
       <Router>
       <Switch>
         <Route path="/register">
-          <LoginSection />
+          <Register />
         </Route>
         <Route path="/login">
-          <LoginSection />
+          <Login />
         </Route>
-        <Route path="/dashboard">
-          <LoginSection />
+        <Route path="/profile">
+          <Profile />
+        </Route>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="/timetables">
+          <Timetables />
         </Route>
         <Route path="/">
           <LoginSection />
