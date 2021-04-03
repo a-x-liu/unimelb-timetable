@@ -15,6 +15,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import { lightBlue } from '@material-ui/core/colors';
 import {  makeStyles } from'@material-ui/core/styles';
+import Wave from 'react-wavify';
 
 function Alert (props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -62,7 +63,7 @@ function LoginSection () {
             <Button variant="contained" color="primary">
               Login
             </Button>
-            <Link to="/register">
+            <Link to="/register" style={{ textDecoration: 'none' }}>
               <Button variant="contained" color="secondary">
                 Register
               </Button>
@@ -70,9 +71,18 @@ function LoginSection () {
           </div>
         </form>
       </div>
-      <div id="wrapper">
-        <div id="wave1"></div>
-        <div id="wave2"></div>
+      <div id="wave">
+        <Wave fill='#D3EAFF'
+          paused={false}
+          options={{
+            position: 'fixed',
+            bottom: '0px',
+            height: 20,
+            amplitude: 35,
+            speed: 0.2,
+            points: 4
+          }}
+        />
       </div>
     </div>
   );
