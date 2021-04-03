@@ -41,11 +41,11 @@ export default function () {
                     <div className="loginButton">
                         
                     <Button variant="contained" color="primary">
-                        Create Account
+                        Submit
                     </Button>
                     <Link to="/" style={{ textDecoration: 'none' }}>
                         <Button variant="contained" color="secondary">
-                            Return Home
+                            Back
                         </Button>
                     </Link>
                     
