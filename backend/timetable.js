@@ -1,25 +1,27 @@
 const con = require('./database');
+let helpers = require('./helpers');
+let tokenCheck = helpers.tokenCheck;
 
-exports.timetableCreate = function(userId, timetableTitle) {
+exports.timetableCreate = function(token, userId, timetableTitle) {
     // console.log('timetable create');
 };  
 
-exports.timetableInfo = function(timetableId) {
+exports.timetableInfo = function(token, timetableId) {
     // console.log('timetable info');
 };
 
-exports.timetableUpdate = function(timetableId, newTitle) {
+exports.timetableUpdate = function(token, timetableId, newTitle) {
     // console.log('timetable update');
 };
 
-exports.timetableDelete = function(userID, timetableId) {
+exports.timetableDelete = function(token, userID, timetableId) {
     // console.log('timetable delete');
 };
 
-exports.timetableAddEvent = function(timetableId, eventId) {
-    console.log('timetable add event');
+exports.timetableAddEvent = function(token, timetableId, eventId) {
+    // console.log('timetable add event');
 };
 
-exports.timetableDeleteEvent = function(timetableId, eventId) {
-    console.log('timetable delete event');
+exports.timetableDeleteEvent = function(token, timetableId, eventId) {
+    // console.log('timetable delete event');
 };

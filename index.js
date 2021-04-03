@@ -4,28 +4,28 @@ const path = require('path');
 
 let authFunctions = require('./backend/auth');
 let authLogin = authFunctions.authLogin;
-// let authRegister = authFunctions.authRegister;
-// let authLogout = authFunctions.authLogout;
+let authRegister = authFunctions.authRegister;
+let authLogout = authFunctions.authLogout;
 
-// let userFunctions = require('./backend/user');
-// let userProfile = userFunctions.userProfile;
-// let userUpdate = userFunctions.userUpdate;
-// let userChartPercentTime = userFunctions.userChartPercentTime;
-// let userChartTotalTime = userFunctions.userChartTotalTime;
+let userFunctions = require('./backend/user');
+let userProfile = userFunctions.userProfile;
+let userUpdate = userFunctions.userUpdate;
+let userChartPercentTime = userFunctions.userChartPercentTime;
+let userChartTotalTime = userFunctions.userChartTotalTime;
 
-// let timetableFunctions = require('./backend/timetable');
-// let timetableCreate = timetableFunctions.timetableCreate;
-// let timetableInfo = timetableFunctions.timetableInfo;
-// let timetableUpdate = timetableFunctions.timetableUpdate;
-// let timetableDelete = timetableFunctions.timetableDelete;
-// let timetableAddEvent = timetableFunctions.timetableAddEvent;
-// let timetableDeleteEvent = timetableFunctions.timetableDeleteEvent;
+let timetableFunctions = require('./backend/timetable');
+let timetableCreate = timetableFunctions.timetableCreate;
+let timetableInfo = timetableFunctions.timetableInfo;
+let timetableUpdate = timetableFunctions.timetableUpdate;
+let timetableDelete = timetableFunctions.timetableDelete;
+let timetableAddEvent = timetableFunctions.timetableAddEvent;
+let timetableDeleteEvent = timetableFunctions.timetableDeleteEvent;
 
-// let eventFunctions = require('./backend/event');
-// let eventCreate = eventFunctions.eventCreate;
-// let eventInfo = eventFunctions.eventInfo;
-// let eventUpdate = eventFunctions.eventUpdate;
-// let eventDelete = eventFunctions.eventDelete;
+let eventFunctions = require('./backend/event');
+let eventCreate = eventFunctions.eventCreate;
+let eventInfo = eventFunctions.eventInfo;
+let eventUpdate = eventFunctions.eventUpdate;
+let eventDelete = eventFunctions.eventDelete;
 
 const app = express();
 app.use(cors());
@@ -55,7 +55,7 @@ app.get('/test', (req, res) => {
 });
 
 // auth functions
-// authRegister('testname', 'testpassword');
+// authRegister('second', 'second');
 
 app.post('/auth/login', (req, res) => {
   let token;
@@ -65,8 +65,16 @@ app.post('/auth/login', (req, res) => {
   });
 });
 
+app.post('/auth/logout', (req, res) => {
+  authLogout(req.body.token, req.body.userId);
+});
 
-// authLogout();
+app.post('auth/register', (req, res) => {
+  authRegister(req.body.username, req.body.password);
+});
+// authLogin('testname', 'testpassword');
+
+// authLogout('PEBxaAdsQnOlCccUFsHWJJU14FvKcv2H', 0);
 
 
 // user functions

@@ -1,17 +1,19 @@
 const con = require('./database');
+let helpers = require('./helpers');
+let tokenCheck = helpers.tokenCheck;
 
-exports.userProfile = function(userId) {
+exports.userProfile = function(token, userId) {
     // console.log('user profile');
 };
 
-exports.userUpdate = function(userId, userName, userPassword, userSrc) {
+exports.userUpdate = function(token, userId, userName, userPassword, userSrc) {
     // console.log('user update');
 };
 
-exports.userChartPercentTime = function(userId, timetableId) {
+exports.userChartPercentTime = function(token, userId, timetableId) {
     // console.log('user chart percent');
 };
 
-exports.userChartTotalTime = function(userId, timetableId) {
+exports.userChartTotalTime = function(token, userId, timetableId) {
     // console.log('user chart total');
 };
