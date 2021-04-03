@@ -49,7 +49,7 @@ function LoginSection () {
   }
 
   return (
-    <div>
+    <div id="container">
       <div id="info"> 
         <h2> Prolvan Timetabling</h2>
         <div> This is a timetabling service brought to you by Prolvan and co!</div>
