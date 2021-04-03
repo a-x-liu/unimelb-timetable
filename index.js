@@ -69,10 +69,25 @@ app.post('/auth/logout', (req, res) => {
   authLogout(req.body.token, req.body.userId);
 });
 
-app.post('auth/register', (req, res) => {
+app.post('/auth/register', (req, res) => {
   authRegister(req.body.username, req.body.password);
 });
-// authLogin('testname', 'testpassword');
+
+app.post('/timetable', (req, res) => {
+  timetableCreate(req.body.token, req.body.userId, req.body.timetableTitle, async function(result) {
+    res.json(result);
+  });
+});
+
+app.get('/timetable', (req, res) => {
+  timetableInfo(req.query.token, req.query.userId, req.query.timetableId, async function(result) {
+    res.json(result);
+  });
+
+})
+
+// authLogin('second', 'second');
+// timetableCreate('898xdkUDSxP0zKUxWHtLGVt9kZbbz8VO', 2, 'testTitle');
 
 // authLogout('PEBxaAdsQnOlCccUFsHWJJU14FvKcv2H', 0);
 
