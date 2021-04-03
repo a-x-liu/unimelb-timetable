@@ -45,13 +45,13 @@ app.get('/test', (req, res) => {
   console.log("hello2");
   const jsonString = JSON.stringify(customer)
   console.log(jsonString);
-  fs.appendFile('./database.json', jsonString, err => {
-      if (err) {
-          console.log('Error writing file', err)
-      } else {
-          console.log('Successfully wrote file')
-      }
-  });
+  // fs.appendFile('./database.json', jsonString, err => {
+  //     if (err) {
+  //         console.log('Error writing file', err)
+  //     } else {
+  //         console.log('Successfully wrote file')
+  //     }
+  // });
 });
 
 // auth functions
