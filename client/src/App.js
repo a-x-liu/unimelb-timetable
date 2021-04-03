@@ -11,6 +11,7 @@ import {
   Switch,
   Route,
   Link,
+  useHistory,
 } from 'react-router-dom';
 
 import TextField from '@material-ui/core/TextField';
@@ -27,6 +28,7 @@ function Alert (props) {
 
 function LoginSection () {
   const [open, setOpen] = React.useState(false);
+  const history = useHistory();
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -50,6 +52,34 @@ function LoginSection () {
 
   async function submitLogin (e) {
     console.log("we are submitting");
+    e.preventDefault();
+
+    const username = document.getElementById('loginUsername').value;
+    const password = document.getElementById('loginPassword').value;
+
+    console.log(username, password);
+    const data = {
+      username: username,
+      password: password
+    }
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }
+ 
+    const res = await fetch('http://localhost:5000/auth/login', options);
+    const resdata = await res.json();
+    console.log("hello there " + resdata);
+    window.localStorage.setItem("userToken", resdata);
+    //add error checks
+    // setOpen(false);
+    //if thing works we use the history to travel
+    history.push('/timetables');
   }
 
   return (
@@ -64,11 +94,11 @@ function LoginSection () {
           <TextField id="loginUsername" label="Username" variant="outlined" style={username}/>
           <TextField id="loginPassword" label="Password" variant="outlined" type="password" style={password} />
           <div className="loginButton">
-            <Link to="/login" style={{ textDecoration: 'none' }}>
-              <Button variant="contained" color="primary">
+            {/* <Link to="/login" style={{ textDecoration: 'none' }}> */}
+              <Button variant="contained" color="primary" type='submit'>
                 Login
               </Button>
-            </Link>
+            {/* </Link> */}
             <Link to="/register" style={{ textDecoration: 'none' }}>
               <Button variant="contained" color="secondary">
                 Register

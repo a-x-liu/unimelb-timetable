@@ -16,13 +16,16 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
+import GridTimetable from './GridTimetable';
 
 import {
     BrowserRouter as Router,
     Switch,
     Route,
     Link,
+    useHistory,
 } from 'react-router-dom';
+import Timetable from './GridTimetable';
 
 const useStyles = makeStyles((theme) => ({
     abRoot: {
@@ -42,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
     const [auth, setAuth] = React.useState(true);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
+    const history = useHistory();
   
     const handleChange = (event) => {
       setAuth(event.target.checked);
@@ -54,6 +58,34 @@ const useStyles = makeStyles((theme) => ({
     const handleClose = () => {
       setAnchorEl(null);
     };
+
+    async function handleLogout (e) {
+      e.preventDefault();
+
+      const userToken = window.localStorage.getItem("userToken");
+      // const userId = window.localStorage.getItem("userId");
+
+      const data = {
+        userid: 0,
+        userToken: userToken
+      }
+
+      console.log(0, data);
+
+      const options = {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      }
+
+      const res = await fetch('http://localhost:5000/auth/logout', options);
+      const resdata = await res.json();
+      history.push('/login');
+    }
+
     return (
         <div> 
          <div className={classes.root}>
@@ -106,9 +138,9 @@ const useStyles = makeStyles((theme) => ({
                         <Link to="/profile" style={{ textDecoration: 'none', color:'black' }}>
                             <MenuItem onClick={handleClose}>Profile</MenuItem>
                         </Link>
-                        <Link to="/" style={{ textDecoration: 'none', color:'red' }}>
-                            <MenuItem onClick={handleClose}>Logout</MenuItem>
-                        </Link>
+                        {/* <Link to="/" style={{ textDecoration: 'none', color:'red' }}> */}
+                            <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                        {/* </Link> */}
                     </Menu>
                     
                     </div>
@@ -116,7 +148,8 @@ const useStyles = makeStyles((theme) => ({
                 </Toolbar>
             </AppBar>
             <h1>Timetables</h1>            
-            <p>These are your timetables!</p>
+            <p>These are your timetablesagrargr!</p>
+            <GridTimetable></GridTimetable>
          </div>
     </div>
   );
