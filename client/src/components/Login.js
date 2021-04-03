@@ -60,9 +60,11 @@ const useStyles = makeStyles((theme) => ({
     
             <AppBar position="static">
                 <Toolbar>
-                <Typography variant="h6" className={classes.title}>
-                    Prolvan Timetabling
-                </Typography>
+                <Link to="/login" style={{ color: 'white', textDecoration: 'none', marginRight: '65%' }}>
+                    <Typography variant="h6" className={classes.title}>
+                        Prolvan Timetabling
+                    </Typography>
+                </Link>
                 <Button variant="h9" className={classes.title} style={{ maxWidth: '150px' }}>
                     My Timetables
                 </Button>
@@ -71,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
                 </Button>
                 {auth && (
                     <div>
-                    <Link to="/profile" style={{ color: 'white' }}>
+                    <Link to="/profile" style={{ color: 'white', float:'right' }}>
                         <IconButton
                             aria-label="account of current user"
                             aria-controls="menu-appbar"
@@ -106,12 +108,16 @@ const useStyles = makeStyles((theme) => ({
          </div>
          <Fab color="secondary" aria-label="add" id="addTableButton" 
                 style={{
-                marginTop: '50%',
-                marginLeft: '90%' }}
+                margin: '50px',
+                position:'absolute', 
+                bottom: '0',
+                right: '0'
+                 }}
             >
             <AddIcon />
-         </Fab>
+        </Fab>
 
+         
     </div>
     );
   }
