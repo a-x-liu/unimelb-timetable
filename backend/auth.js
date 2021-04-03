@@ -8,17 +8,8 @@
 const con = require('./database');
 let helpers = require('./helpers');
 let tokenCheck = helpers.tokenCheck;
+let generateToken = helpers.generateToken;
 
-// function to generate token
-function generateToken(length) {
-    var a = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".split("");
-    var b = [];  
-    for (var i=0; i < length; i++) {
-        var j = (Math.random() * (a.length-1)).toFixed(0);
-        b[i] = a[j];
-    }
-    return b.join("");
-}
 
 exports.authLogin = function(authName, authPassword, callback) {
     // console.log('auth login');
