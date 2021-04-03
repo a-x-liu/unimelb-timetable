@@ -42,54 +42,37 @@ function LoginSection () {
     height: '120%'
   }
 
-  const theme = makeStyles({
-    root: {
-      background: lightBlue,
-
-    }
-    
-  });
-
 
   async function submitLogin (e) {
     console.log("we are submitting");
   }
 
-  const classes = theme();
   return (
-    <div id="wrapper">
-      <div id="wave">
-        <div>
-          <div id="info"> 
-            <h2> Prolvan Timetabling</h2>
-            <div> This is a timetabling service brought to you by Prolvan and co!</div>
-        </div>
-
-          <div className="loginPage" id="section">
-            <h2>Login</h2>
-            <form onSubmit={submitLogin}>
-              <TextField id="loginUsername" label="Username" variant="outlined" style={username}/>
-              <TextField id="loginPassword" label="Password" variant="outlined" type="password" style={password} />
-              <div className="loginButton">
-                <Button variant="contained" color="primary"type="submit" className={classes.root}>
-                  Login
-                </Button>
-                <Link to="/register">
-                  <Button variant="contained" color="secondary">
-                    Register
-                  </Button>
-                </Link>
-              </div>
-            </form>
+    <div>
+      <div id="info"> 
+        <h2> Prolvan Timetabling</h2>
+        <div> This is a timetabling service brought to you by Prolvan and co!</div>
+      </div>
+      <div className="loginPage" id="section">
+        <h2>Login</h2>
+        <form onSubmit={submitLogin}>
+          <TextField id="loginUsername" label="Username" variant="outlined" style={username}/>
+          <TextField id="loginPassword" label="Password" variant="outlined" type="password" style={password} />
+          <div className="loginButton">
+            <Button variant="contained" color="primary">
+              Login
+            </Button>
+            <Link to="/register">
+              <Button variant="contained" color="secondary">
+                Register
+              </Button>
+            </Link>
           </div>
-          <div>
-            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-              <Alert onClose={handleClose} severity="success">
-                This is a success message!
-              </Alert>
-            </Snackbar>
-          </div>
-        </div>
+        </form>
+      </div>
+      <div id="wrapper">
+        <div id="wave1"></div>
+        <div id="wave2"></div>
       </div>
     </div>
   );
