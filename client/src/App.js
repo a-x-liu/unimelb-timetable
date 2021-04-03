@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Register from './components/Register';
+import Login from './components/Login';
 
 import {
   BrowserRouter as Router,
@@ -54,15 +55,17 @@ function LoginSection () {
         <h2> Prolvan Timetabling</h2>
         <div> This is a timetabling service brought to you by Prolvan and co!</div>
       </div>
-      <div className="loginPage" id="section">
+      <div className="loginPage">
         <h2>Login</h2>
         <form onSubmit={submitLogin}>
           <TextField id="loginUsername" label="Username" variant="outlined" style={username}/>
           <TextField id="loginPassword" label="Password" variant="outlined" type="password" style={password} />
           <div className="loginButton">
-            <Button variant="contained" color="primary">
-              Login
-            </Button>
+            <Link to="/login" style={{ textDecoration: 'none' }}>
+              <Button variant="contained" color="primary">
+                Login
+              </Button>
+            </Link>
             <Link to="/register" style={{ textDecoration: 'none' }}>
               <Button variant="contained" color="secondary">
                 Register
@@ -97,7 +100,7 @@ function App () {
           <Register />
         </Route>
         <Route path="/login">
-          <LoginSection />
+          <Login />
         </Route>
         <Route path="/dashboard">
           <LoginSection />
