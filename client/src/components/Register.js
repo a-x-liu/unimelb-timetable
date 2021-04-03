@@ -32,9 +32,8 @@ const username = {
 export default function () {
     return (
         <div>
-            
-            <div className="RegisterPage">
-                <h2>Register here!</h2>
+            <div id="RegisterPage">
+                <h2 id="RegisterTitle">Register here!</h2>
                 <form>
                     <TextField id="registerUsername" label="Username" variant="outlined" style={username}/>
                     <TextField id="registerPassword" label="Password" variant="outlined" type="password" style={password} />
