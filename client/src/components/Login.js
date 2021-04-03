@@ -69,22 +69,22 @@ const useStyles = makeStyles((theme) => ({
                     <span className="menuElement">My Timetables</span>
                 </Button>
                 <Button variant="h9" className={classes.title} style={{ maxWidth: '150px' }}>
-                <span className="menuElement">About us</span>
+                    <span className="menuElement">About us</span>
                 </Button>
                 {auth && (
                     <div>
-                    <Link to="/profile" style={{ color: 'black', float:'right' }}>
-                        <IconButton
-                            aria-label="account of current user"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleMenu}
-                            color="inherit"
-                        >
-                            <AccountCircle />
-                        </IconButton>
-                    </Link>
-                    {/* <Menu
+                    
+                    <IconButton
+                        aria-label="account of current user"
+                        aria-controls="menu-appbar"
+                        aria-haspopup="true"
+                        onClick={handleMenu}
+                        color="black"
+                    >
+                        <AccountCircle />
+                    </IconButton>
+
+                    <Menu
                         id="menu-appbar"
                         anchorEl={anchorEl}
                         anchorOrigin={{
@@ -99,8 +99,14 @@ const useStyles = makeStyles((theme) => ({
                         open={open}
                         onClose={handleClose}
                     >
-                        
-                    </Menu> */}
+                        <Link to="/profile" style={{ textDecoration: 'none', color:'black' }}>
+                            <MenuItem onClick={handleClose}>Profile</MenuItem>
+                        </Link>
+                        <Link to="/" style={{ textDecoration: 'none', color:'red' }}>
+                            <MenuItem onClick={handleClose}>Logout</MenuItem>
+                        </Link>
+                    </Menu>
+                    
                     </div>
                 )}
                 </Toolbar>
