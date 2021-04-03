@@ -42,7 +42,7 @@ exports.authLogin = function(authName, authPassword, callback) {
     console.log(sqlUpdate);
     con.query(sqlUpdate, function(err, res) {
         if (err) throw err;
-        // return callback(token);
+        return callback(token);
     })
     
 };

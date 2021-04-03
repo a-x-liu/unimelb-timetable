@@ -9,6 +9,7 @@ import {
     Switch,
     Route,
     Link,
+    useHistory,
 } from 'react-router-dom';
   
 const username = {
@@ -17,30 +18,59 @@ const username = {
     marginBottom: '2%'
   }
 
-  const password = {
+const password = {
     width: '95%',
     height: '120%',
     marginBottom: '2%'
-  }
+}
 
-  const confirmPassword = {
+const confirmPassword = {
     width: '95%',
     height: '120%',
-  }
+}
+
 
 
 export default function () {
+    const history = useHistory();
+
+    async function submitRego (e) {
+        e.preventDefault();
+    
+        const username = document.getElementById('registerUsername').value;
+        const password = document.getElementById('registerPassword').value;
+    
+        console.log(username, password);
+        const data = {
+          username: username,
+          password: password
+        }
+    
+        const options = {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        }
+     
+        const res = await fetch('http://localhost:5000/auth/register', options);
+        const resdata = await res.json();
+        history.push('/login');
+    }
+
     return (
         <div>
             <div id="RegisterPage">
                 <h2 id="RegisterTitle">Register here!</h2>
-                <form>
+                <form onSubmit={submitRego}>
                     <TextField id="registerUsername" label="Username" variant="outlined" style={username}/>
                     <TextField id="registerPassword" label="Password" variant="outlined" type="password" style={password} />
                     <TextField id="registerConfirmPassword" label="Comfirm Password" variant="outlined" type="password" style={confirmPassword} />
                     <div className="loginButton">
                         
-                    <Button variant="contained" color="primary">
+                    <Button variant="contained" color="primary" type='submit'>
                         Submit
                     </Button>
                     <Link to="/" style={{ textDecoration: 'none' }}>
@@ -48,8 +78,6 @@ export default function () {
                             Back
                         </Button>
                     </Link>
-                    
-                    
                     </div>
                 </form>
             </div>

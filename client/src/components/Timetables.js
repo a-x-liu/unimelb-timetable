@@ -23,6 +23,7 @@ import {
     Switch,
     Route,
     Link,
+    useHistory,
 } from 'react-router-dom';
 import Timetable from './GridTimetable';
 
@@ -44,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
     const [auth, setAuth] = React.useState(true);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
+    const history = useHistory();
   
     const handleChange = (event) => {
       setAuth(event.target.checked);
@@ -56,6 +58,33 @@ const useStyles = makeStyles((theme) => ({
     const handleClose = () => {
       setAnchorEl(null);
     };
+
+    async function handleLogout (e) {
+      e.preventDefault();
+
+      const userToken = window.localStorage.getItem("userToken");
+      // const userId = window.localStorage.getItem("userId");
+
+      const data = {
+        userid: 0,
+        userToken: userToken
+      }
+
+      console.log(0, data);
+
+      const options = {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      }
+
+      const res = await fetch('http://localhost:5000/auth/logout', options);
+      const resdata = await res.json();
+      history.push('/login');
+    }
     return (
         <div> 
          <div className={classes.root}>
@@ -108,9 +137,9 @@ const useStyles = makeStyles((theme) => ({
                         <Link to="/profile" style={{ textDecoration: 'none', color:'black' }}>
                             <MenuItem onClick={handleClose}>Profile</MenuItem>
                         </Link>
-                        <Link to="/" style={{ textDecoration: 'none', color:'red' }}>
-                            <MenuItem onClick={handleClose}>Logout</MenuItem>
-                        </Link>
+                        {/* <Link to="/" style={{ textDecoration: 'none', color:'red' }}> */}
+                            <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                        {/* </Link> */}
                     </Menu>
                     
                     </div>

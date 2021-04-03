@@ -69,7 +69,7 @@ app.post('/auth/logout', (req, res) => {
   authLogout(req.body.token, req.body.userId);
 });
 
-app.post('auth/register', (req, res) => {
+app.post('/auth/register', (req, res) => {
   authRegister(req.body.username, req.body.password);
 });
 // authLogin('testname', 'testpassword');
