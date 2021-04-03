@@ -4,28 +4,28 @@ const path = require('path');
 
 let authFunctions = require('./backend/auth');
 let authLogin = authFunctions.authLogin;
-let authRegister = authFunctions.authRegister;
-let authLogout = authFunctions.authLogout;
+// let authRegister = authFunctions.authRegister;
+// let authLogout = authFunctions.authLogout;
 
-let userFunctions = require('./backend/user');
-let userProfile = userFunctions.userProfile;
-let userUpdate = userFunctions.userUpdate;
-let userChartPercentTime = userFunctions.userChartPercentTime;
-let userChartTotalTime = userFunctions.userChartTotalTime;
+// let userFunctions = require('./backend/user');
+// let userProfile = userFunctions.userProfile;
+// let userUpdate = userFunctions.userUpdate;
+// let userChartPercentTime = userFunctions.userChartPercentTime;
+// let userChartTotalTime = userFunctions.userChartTotalTime;
 
-let timetableFunctions = require('./backend/timetable');
-let timetableCreate = timetableFunctions.timetableCreate;
-let timetableInfo = timetableFunctions.timetableInfo;
-let timetableUpdate = timetableFunctions.timetableUpdate;
-let timetableDelete = timetableFunctions.timetableDelete;
-let timetableAddEvent = timetableFunctions.timetableAddEvent;
-let timetableDeleteEvent = timetableFunctions.timetableDeleteEvent;
+// let timetableFunctions = require('./backend/timetable');
+// let timetableCreate = timetableFunctions.timetableCreate;
+// let timetableInfo = timetableFunctions.timetableInfo;
+// let timetableUpdate = timetableFunctions.timetableUpdate;
+// let timetableDelete = timetableFunctions.timetableDelete;
+// let timetableAddEvent = timetableFunctions.timetableAddEvent;
+// let timetableDeleteEvent = timetableFunctions.timetableDeleteEvent;
 
-let eventFunctions = require('./backend/event');
-let eventCreate = eventFunctions.eventCreate;
-let eventInfo = eventFunctions.eventInfo;
-let eventUpdate = eventFunctions.eventUpdate;
-let eventDelete = eventFunctions.eventDelete;
+// let eventFunctions = require('./backend/event');
+// let eventCreate = eventFunctions.eventCreate;
+// let eventInfo = eventFunctions.eventInfo;
+// let eventUpdate = eventFunctions.eventUpdate;
+// let eventDelete = eventFunctions.eventDelete;
 
 const app = express();
 app.use(cors());
@@ -45,42 +45,51 @@ app.get('/test', (req, res) => {
   console.log("hello2");
   const jsonString = JSON.stringify(customer)
   console.log(jsonString);
-  fs.appendFile('./database.json', jsonString, err => {
-      if (err) {
-          console.log('Error writing file', err)
-      } else {
-          console.log('Successfully wrote file')
-      }
-  });
+  // fs.appendFile('./database.json', jsonString, err => {
+  //     if (err) {
+  //         console.log('Error writing file', err)
+  //     } else {
+  //         console.log('Successfully wrote file')
+  //     }
+  // });
 });
 
 // auth functions
-authLogin();
-authRegister();
-authLogout();
+// authRegister('testname', 'testpassword');
+
+app.post('/auth/login', (req, res) => {
+  let token;
+  authLogin(req.body.username, req.body.password, async function(result) {
+    token = result;
+    res.json(token);
+  });
+});
+
+
+// authLogout();
 
 
 // user functions
-userProfile();
-userUpdate();
-userChartPercentTime();
-userChartTotalTime();
+// userProfile();
+// userUpdate();
+// userChartPercentTime();
+// userChartTotalTime();
 
 
 // timetable functions
-timetableCreate();
-timetableInfo();
-timetableUpdate();
-timetableDelete();
-timetableAddEvent();
-timetableDeleteEvent();
+// timetableCreate();
+// timetableInfo();
+// timetableUpdate();
+// timetableDelete();
+// timetableAddEvent();
+// timetableDeleteEvent();
 
 
 // event functions
-eventCreate();
-eventInfo();
-eventUpdate();
-eventDelete();
+// eventCreate();
+// eventInfo();
+// eventUpdate();
+// eventDelete();
 
 
 

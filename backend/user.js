@@ -1,24 +1,17 @@
-let database = require('./database.js');
-
-let users = database.users;
-let timetables = database.users;
-let events = database.users;
-let user = database.user;
-let timetable = database.timetable;
-let event = database.event;
+const con = require('./database');
 
 exports.userProfile = function(userId) {
-    console.log('user profile');
+    // console.log('user profile');
 };
 
 exports.userUpdate = function(userId, userName, userPassword, userSrc) {
-    console.log('user update');
+    // console.log('user update');
 };
 
 exports.userChartPercentTime = function(userId, timetableId) {
-    console.log('user chart percent');
+    // console.log('user chart percent');
 };
 
 exports.userChartTotalTime = function(userId, timetableId) {
-    console.log('user chart total');
+    // console.log('user chart total');
 };
