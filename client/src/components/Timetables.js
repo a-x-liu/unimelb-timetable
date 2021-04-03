@@ -16,6 +16,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
+import GridTimetable from './GridTimetable';
 
 import {
     BrowserRouter as Router,
@@ -23,6 +24,7 @@ import {
     Route,
     Link,
 } from 'react-router-dom';
+import Timetable from './GridTimetable';
 
 const useStyles = makeStyles((theme) => ({
     abRoot: {
@@ -116,7 +118,8 @@ const useStyles = makeStyles((theme) => ({
                 </Toolbar>
             </AppBar>
             <h1>Timetables</h1>            
-            <p>These are your timetables!</p>
+            <p>These are your timetablesagrargr!</p>
+            <GridTimetable></GridTimetable>
          </div>
     </div>
   );
