@@ -149,3 +149,7 @@ html{
 .MuiButton-label {
   color: #ffffff;
 }
+
+.menuButtons{
+  float: right;
+}
