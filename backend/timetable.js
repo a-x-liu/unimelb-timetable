@@ -36,7 +36,6 @@ exports.timetableInfo = function(token, userId, timetableId, callback) {
             })
         }
     });
-
 };
 
 exports.timetableUpdate = function(token, userId, timetableId, newTitle) {

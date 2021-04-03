@@ -55,8 +55,6 @@ app.get('/test', (req, res) => {
 });
 
 // auth functions
-// authRegister('second', 'second');
-
 app.post('/auth/login', (req, res) => {
   let token;
   authLogin(req.body.username, req.body.password, async function(result) {
@@ -73,6 +71,8 @@ app.post('/auth/register', (req, res) => {
   authRegister(req.body.username, req.body.password);
 });
 
+
+// timetable functions
 app.post('/timetable', (req, res) => {
   timetableCreate(req.body.token, req.body.userId, req.body.timetableTitle, async function(result) {
     res.json(result);
@@ -83,9 +83,25 @@ app.get('/timetable', (req, res) => {
   timetableInfo(req.query.token, req.query.userId, req.query.timetableId, async function(result) {
     res.json(result);
   });
+});
 
-})
 
+// event functions
+app.post('/event', (req, res) => {
+  eventCreate(req.body.token, req.body.userId, req.body.eventTitle, req.body.eventDay, req.body.eventStartTime, req.body.eventEndTime, req.body.eventType, req.body.description, async function(result) {
+    res.json(result);
+  });
+});
+
+app.get('/event', (req, res) => {
+  // console.log(req);
+  eventInfo(req.query.token, req.query.userId, req.query.eventId, async function(result) {
+    res.json(result);
+  });
+});
+
+// eventCreate('898xdkUDSxP0zKUxWHtLGVt9kZbbz8VO', '2', 'eventTitle', 'eventDate', '0', '10', 'work', 'description');
+// eventInfo('898xdkUDSxP0zKUxWHtLGVt9kZbbz8VO', '2', '77733977');
 // authLogin('second', 'second');
 // timetableCreate('898xdkUDSxP0zKUxWHtLGVt9kZbbz8VO', 2, 'testTitle');
 
