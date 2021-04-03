@@ -33,6 +33,8 @@ export default function (props) {
     const classes = useStyles();
     const {id, title, day, start, end, description, type} = props
 
+    console.log("hello");
+
     const [dimensions, setDimensions] = React.useState({ 
     });
 
