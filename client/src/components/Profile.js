@@ -16,6 +16,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
+import Avatar from '@material-ui/core/Avatar';
 import {
     VictoryChart,
     VictoryAxis,
@@ -67,24 +68,25 @@ export default function () {
     return (
         <div>
            <div className={classes.root}>
-    
-                <AppBar position="static">
+                <AppBar position="static" style={{boxShadow:'none'}}>
                     <Toolbar>
-                    <Link to="/login" style={{ color: 'black', textDecoration: 'none', flex:1 }}>
-                        <Typography variant="h6" className={classes.title}>
+                    <Link to="/login" style={{color: 'black', textDecoration: 'none', flex:1 }}>
+                        <Typography variant="h6" className={classes.title} style={{ fontWeight: "bold"}}>
                             Prolvan Timetabling
                         </Typography>
                     </Link>
-                    <Button variant="h9" className={classes.title} style={{ maxWidth: '150px' }}>
-                        <span className="menuElement">My Timetables</span>
-                    </Button>
-                    <Button variant="h9" className={classes.title} style={{ maxWidth: '150px' }}>
-                        <span className="menuElement">About us</span>
-                    </Button>
-
+                    <Link to="/timetables" style={{ color: 'black', textDecoration: 'none'}}>
+                        <Button variant="h9" className={classes.title} style={{ maxWidth: '150px' }}>
+                            <span className="menuElement">My Timetables</span>
+                        </Button>
+                    </Link>
+                    <Link to="/about" style={{ color: 'black', textDecoration: 'none'}}>
+                        <Button variant="h9" className={classes.title} style={{ maxWidth: '150px' }}>
+                            <span className="menuElement">About us</span>
+                        </Button>
+                    </Link>
                     {auth && (
                         <div>
-                        
                         <IconButton
                             aria-label="account of current user"
                             aria-controls="menu-appbar"
@@ -124,9 +126,9 @@ export default function () {
                 </AppBar>
              </div>
             
-            <div id="profileName">
-                <span id="profilePic"></span> 
-                <h1 id="username">Jin</h1>
+            <div id="profileInfo">
+                <Avatar alt="Jin WK" src="/static/images/avatar/1.jpg" style={{ alignSelf: 'center' }} />
+                <h1 id="username">Terence Huang</h1>
             </div>
             
             <div id="statistics">  
@@ -138,7 +140,7 @@ export default function () {
                             { x: "Dogs", y: 40 },
                             { x: "Birds", y: 55 }
                         ]}
-                        colorScale={["gold", "cyan", "navy"]}
+                        colorScale={["#E2BEF1", "#C6F8E5", "#F9DED7"]}
 
                     />
                 </div>
@@ -149,7 +151,7 @@ export default function () {
                     domainPadding={10}
                     >
                         <VictoryBar
-                            // style={{ data: { fill: "#c43a31" } }}
+                            style={{ data: { fill: "#FFB480" } }}
                             data={[
                                 { experiment: "trial 1", expected: 3.75, actual: 3.21 },
                                 { experiment: "trial 2", expected: 3.75, actual: 3.38 },

@@ -43,7 +43,7 @@
   bottom: 0px;
 }
 
-.RegisterPage {
+#RegisterPage {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -54,6 +54,10 @@
   box-shadow: 10px;
   border-radius: 7%;
   background-color: #ffffff;
+}
+
+#RegisterTitle {
+  margin-top: 0;
 }
 
 .loginButton {
@@ -182,22 +186,25 @@ html{
 }
 
 .graphs {
-  float: right;
   width: 45vh;
+
 }
 
-#profileName {
+#profileInfo {
   margin-top: 5%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
-#profilePic {
+
+/* #profilePic {
   height: 80px;
   width: 80px;
-  background-color: #bbb;
+  background-color: #7AADA0;
   border-radius: 50%;
   display: inline-block;
-}
+} */
 
 #username {
   margin-top: 0;

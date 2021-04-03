@@ -3,6 +3,8 @@ import './App.css';
 import Register from './components/Register';
 import Login from './components/Login';
 import Profile from './components/Profile';
+import Timetables from './components/Timetables';
+import About from './components/About';
 
 import {
   BrowserRouter as Router,
@@ -105,6 +107,12 @@ function App () {
         </Route>
         <Route path="/profile">
           <Profile />
+        </Route>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="/timetables">
+          <Timetables />
         </Route>
         <Route path="/">
           <LoginSection />

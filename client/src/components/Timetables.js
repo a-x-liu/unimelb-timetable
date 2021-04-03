@@ -57,6 +57,7 @@ const useStyles = makeStyles((theme) => ({
     return (
         <div> 
          <div className={classes.root}>
+    
             <AppBar position="static" style={{boxShadow:'none'}}>
                 <Toolbar>
                 <Link to="/login" style={{ color: 'black', textDecoration: 'none', flex:1 }}>
@@ -65,9 +66,9 @@ const useStyles = makeStyles((theme) => ({
                     </Typography>
                 </Link>
                 <Link to="/timetables" style={{ color: 'black', textDecoration: 'none'}}>
-                  <Button variant="h9" className={classes.title} style={{ maxWidth: '150px' }}>
-                      <span className="menuElement">My Timetables</span>
-                  </Button>
+                    <Button variant="h9" className={classes.title} style={{ maxWidth: '150px' }}>
+                        <span className="menuElement">My Timetables</span>
+                    </Button>
                 </Link>
                 <Link to="/about" style={{ color: 'black', textDecoration: 'none'}}>
                   <Button variant="h9" className={classes.title} style={{ maxWidth: '150px' }}>
@@ -114,19 +115,9 @@ const useStyles = makeStyles((theme) => ({
                 )}
                 </Toolbar>
             </AppBar>
-          <h1>Sample Timetable</h1>
+            <h1>Timetables</h1>            
+            <p>These are your timetables!</p>
          </div>
-         <Fab color="secondary" aria-label="add" id="addTableButton" 
-                style={{
-                margin: '50px',
-                position:'absolute', 
-                bottom: '0',
-                right: '0'
-                 }}
-            >
-            <AddIcon />
-        </Fab>
     </div>
   );
 }
-
