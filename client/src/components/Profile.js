@@ -70,21 +70,21 @@ export default function () {
     
                 <AppBar position="static">
                     <Toolbar>
-                    <Link to="/login" style={{ color: 'white', textDecoration: 'none', marginRight: '65%'}}>
+                    <Link to="/login" style={{ color: 'black', textDecoration: 'none', flex:1}}>
                         <Typography variant="h6" className={classes.title}>
                             Prolvan Timetabling
                         </Typography>
                     </Link>
                     <Button variant="h9" className={classes.title} style={{ maxWidth: '150px' }}>
-                        My Timetables
+                        <span className="menuElement">My Timetables</span>
                     </Button>
                     <Button variant="h9" className={classes.title} style={{ maxWidth: '150px' }}>
-                        About us
+                        <span className="menuElement">About us</span>
                     </Button>
 
                     {auth && (
                         <div>
-                        <Link to="/profile" style={{ color: 'white' }}>
+                        <Link to="/profile" style={{ color: 'black' }}>
                             <IconButton
                                 aria-label="account of current user"
                                 aria-controls="menu-appbar"

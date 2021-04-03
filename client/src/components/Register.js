@@ -13,18 +13,18 @@ import {
   
 const username = {
     marginRight: '5px',
-    width: '90%',
+    width: '95%',
     marginBottom: '2%'
   }
 
   const password = {
-    width: '90%',
+    width: '95%',
     height: '120%',
     marginBottom: '2%'
   }
 
   const confirmPassword = {
-    width: '90%',
+    width: '95%',
     height: '120%',
   }
 
@@ -32,24 +32,24 @@ const username = {
 export default function () {
     return (
         <div>
-            <div id="homeButton">
-                <Link to="/" style={{ textDecoration: 'none' }}>
-                    <Button variant="contained" color="primary">
-                        Return Home
-                    </Button>
-                </Link>
-            </div>
+            
             <div className="RegisterPage">
                 <h2>Register here!</h2>
                 <form>
-                    <TextField id="loginUsername" label="Username" variant="outlined" style={username}/>
-                    <TextField id="loginPassword" label="Password" variant="outlined" type="password" style={password} />
-                    <TextField id="loginPassword" label="Comfirm Password" variant="outlined" type="password" style={confirmPassword} />
+                    <TextField id="registerUsername" label="Username" variant="outlined" style={username}/>
+                    <TextField id="registerPassword" label="Password" variant="outlined" type="password" style={password} />
+                    <TextField id="registerConfirmPassword" label="Comfirm Password" variant="outlined" type="password" style={confirmPassword} />
                     <div className="loginButton">
                         
                     <Button variant="contained" color="primary">
                         Create Account
                     </Button>
+                    <Link to="/" style={{ textDecoration: 'none' }}>
+                        <Button variant="contained" color="secondary">
+                            Return Home
+                        </Button>
+                    </Link>
+                    
                     
                     </div>
                 </form>
