@@ -140,3 +140,17 @@ html{
   width: 100%;
   height: 70px;
 }
+
+#addTableButton {
+  float:right;
+  margin-top: 40%;
+  margin-right: 5%;
+}
+
+.MuiToolbar-root{
+  background-color: thistle;
+}
+
+.MuiButton-label {
+  color: #ffffff;
+}
