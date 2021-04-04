@@ -4,6 +4,7 @@ import Register from './components/Register';
 import Profile from './components/Profile';
 import Timetables from './components/Timetables';
 import About from './components/About';
+import Update from './components/Update'
 import { AnimatePresence,  motion } from "framer-motion";
 
 import {
@@ -152,6 +153,9 @@ function App () {
       <Router>
       <AnimatePresence>
       <Switch>
+      <Route path="/update">
+          <Update />
+        </Route>
         <Route path="/timetables">
           <Timetables />
         </Route>
