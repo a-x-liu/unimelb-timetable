@@ -72,8 +72,8 @@ export default function () {
                 <AppBar position="static" style={{boxShadow:'none'}}>
                     <Toolbar>
                     <Link to="/timetables" style={{color: 'black', textDecoration: 'none', flex:1 }}>
-                        <Typography variant="h6" className={classes.title} style={{ fontWeight: "bold"}}>
-                            Prolvan Timetabling
+                        <Typography variant="h6" className={classes.title} style={{ fontWeight: "bold", fontFamily: 'Manjari'}}>
+                            Prolvan
                         </Typography>
                     </Link>
                     <Link to="/about" style={{ color: 'black', textDecoration: 'none'}}>

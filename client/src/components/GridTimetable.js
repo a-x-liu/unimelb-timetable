@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
         height: '65%',
         overflowX: 'hidden',
         overflowY: 'scroll',
-        marginLeft: '10%',
+        marginLeft: '5vh',
         border: 'none'
     },
     row: {

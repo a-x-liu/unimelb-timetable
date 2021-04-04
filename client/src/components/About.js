@@ -62,8 +62,8 @@ const useStyles = makeStyles((theme) => ({
             <AppBar position="static" style={{boxShadow:'none'}}>
                 <Toolbar>
                 <Link to="/timetables" style={{ color: 'black', textDecoration: 'none', flex:1 }}>
-                    <Typography variant="h6" className={classes.title} style={{ fontWeight: "bold"}}>
-                        Prolvan Timetabling
+                    <Typography variant="h6" className={classes.title} style={{ fontFamily: 'Manjari',fontWeight: "bold" }}>
+                        Prolvan
                     </Typography>
                 </Link>
                 <Link to="/about" style={{ color: 'black', textDecoration: 'none'}}>
@@ -109,8 +109,11 @@ const useStyles = makeStyles((theme) => ({
                 )}
                 </Toolbar>
             </AppBar>
-            <h1>About Us</h1>            
-            <p>We are the boydem and we are not skunked</p>
+            <div id="aboutDescription">
+              <h1 id="aboutTitle">About Us</h1>            
+              <p>We are the boydem and we are not skunked</p>
+            </div>
+            
          </div>
     </motion.div>
   );

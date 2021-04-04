@@ -8,10 +8,10 @@ const useStyles = makeStyles((theme) => ({
     event: {
         position: 'absolute',
         zIndex: '1000',
-        borderStyle: 'solid',
+        borderStyle: 'groove',
         borderRadius: '10px',
         borderWidth: '1px',
-        backgroundColor: '#FED5AF',
+        backgroundColor: '#E6D7F0',
 
 
         height: '300px',
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 
     },
     eventHeader: {
-        borderBottom: 'solid',
+        borderBottom: 'groove',
         borderWidth: '1px'
     }, 
     eventTitle: {
