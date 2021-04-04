@@ -68,6 +68,7 @@ app.get('/test', (req, res) => {
 //////////////////////////////////
 app.post('/auth/login', (req, res) => {
   authLogin(req.body.username, req.body.password, async function(result) {
+    console.log('BACKEND BACKEND');
     res.json(result);
   });
 });
