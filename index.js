@@ -12,6 +12,7 @@ let authLogout = authFunctions.authLogout;
 let userFunctions = require('./backend/user');
 let userProfile = userFunctions.userProfile;
 let userUpdate = userFunctions.userUpdate;
+let userTimetable = userFunctions.userTimetable;
 
 let timetableFunctions = require('./backend/timetable');
 let timetableCreate = timetableFunctions.timetableCreate;
@@ -176,6 +177,12 @@ app.put('/user', (req, res) => {
   userUpdate(req.body.token, req.body.userId, req.body.userName, req.body.userPassword, req.body.src);
 });
 
+app.get('/user/timetable', (req, res) => {
+  userTimetable(req.query.token, req.query.userId, async function(result) {
+    res.json(result);
+  });
+});
+
 // authRegister('third', 'third');
 // authLogin('third', 'third');
 // authRegister('fifth', 'fifth');
@@ -197,7 +204,7 @@ app.put('/user', (req, res) => {
 
 // eventUpdate('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', '82548946', 'new Title', '4', '7', null, '1', 'new desc');
 
-
+// userTimetable('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6');
 
 
 

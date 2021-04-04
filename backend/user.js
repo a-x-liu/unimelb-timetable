@@ -50,3 +50,21 @@ exports.userUpdate = function(token, userId, userName, userPassword, userSrc) {
     });
 };
 
+exports.userTimetable = function(token, userId, callback) {
+    tokenCheck(token, con, userId, async function(result) {
+        if (!result) {
+            console.log('Invalid token');
+            return;
+        } else {
+            let sqlUserTimetable = `SELECT timetable_id FROM timetables WHERE user_id = "${userId}"`;
+            con.query(sqlUserTimetable, function(err, res) {
+                if (err) throw err;
+                console.log(res);
+                let result = JSON.parse(JSON.stringify(res[0]));
+                console.log(result);
+                return callback(result.timetable_id);
+            })
+        }
+    });
+};
+
