@@ -29,7 +29,7 @@ exports.authLogin = function(authName, authPassword, callback) {
 
     // inserting token into sql
     let token = generateToken(32);
-    let sqlUpdate = `UPDATE users SET user_token = "${token}" WHERE name = "${authName}"`;
+    let sqlUpdate = `UPDATE users SET user_token = "${token}" WHERE name = "${authName}";`;
     console.log(sqlUpdate);
     con.query(sqlUpdate, function(err, res) {
         if (err) throw err;
@@ -42,7 +42,7 @@ exports.authRegister = function(authName, authPassword, callback) {
     // console.log('auth register');
 
     // usernames must be unique
-    let sqlCountName = `SELECT COUNT(name) FROM users WHERE name = "${authName}"`;
+    let sqlCountName = `SELECT COUNT(name) FROM users WHERE name = "${authName}";`;
     con.query(sqlCountName, function(err, res) {
         if (err) throw err;
         let names = JSON.parse(JSON.stringify(res[0]));

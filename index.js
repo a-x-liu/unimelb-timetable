@@ -109,11 +109,11 @@ app.get('/user', (req,res) => {
   })
 })
 
-// authRegister('second', 'second');
-// authLogin('second', 'second');
+// authRegister('third', 'third');
+// authLogin('third', 'third');
 // userProfile('FXRdZLMEt7ljPtVDjLWIBn76NWFfZXpG', '2)');
 // timetableCreate('KhORiIVOo7nucPpnLLpfZhFtA7BK2Xle', '1', 'testTimetable');
-
+eventCreate('KhORiIVOo7nucPpnLLpfZhFtA7BK2Xle', '1', 'event1', 'wednesday', '7', '9', 'work', 'code stuff');
 
 // user functions
 // userProfile();

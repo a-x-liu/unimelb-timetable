@@ -14,7 +14,7 @@ exports.eventCreate = function(token, userId, eventTitle, eventDay, eventStartTi
             let sqlEvent = `INSERT INTO events (event_id, title, day, time_start, time_end, type, description) VALUES ("${eventId}", "${eventTitle}", "${eventDay}", "${eventStartTime}", "${eventEndTime}", "${eventType}", "${eventDescription}")`;
             con.query(sqlEvent, function(err, res) {
                 if (err) throw err;
-                return callback(eventId);
+                // return callback(eventId);
             })
         }
     });
