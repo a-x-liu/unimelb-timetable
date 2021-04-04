@@ -61,27 +61,27 @@ export default function (props) {
         <FormLabel component="legend">labelPlacement</FormLabel>
         <RadioGroup row aria-label="position" name="position" defaultValue="top">
             <FormControlLabel
-            value="top"
+            value="Study"
             control={<Radio color="primary" />}
-            label="Top"
+            label="Study"
             labelPlacement="bottom"
             />
             <FormControlLabel
-            value="start"
+            value="Work"
             control={<Radio color="primary" />}
-            label="Start"
+            label="Work"
             labelPlacement="bottom"
             />
             <FormControlLabel
-            value="bottom"
+            value="Leisure"
             control={<Radio color="primary" />}
-            label="Bottom"
+            label="Leisure"
             labelPlacement="bottom"
             />
             <FormControlLabel
-            value="end"
+            value="Other"
             control={<Radio color="primary" />}
-            label="Bottom"
+            label="Other"
             labelPlacement="bottom"
             />
         </RadioGroup>
@@ -89,11 +89,11 @@ export default function (props) {
         </div>
             </DialogContent>
             <DialogActions>
-            <Button onClick={close} color="primary">
+            <Button onClick={close} variant="contained" color="secondary">
                 Cancel
             </Button>
-            <Button onClick={close} color="primary">
-                Subscribe
+            <Button onClick={close} variant="contained" color="primary">
+                Create Timetable
             </Button>
             </DialogActions>
         </Dialog>

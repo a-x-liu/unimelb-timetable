@@ -6,11 +6,12 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles((theme) => ({
     event: {
+
         borderStyle: 'solid',
+
         borderRadius: '10px',
         borderWidth: '1px',
-        backgroundColor: 'white',
-
+        backgroundColor: '#E6D7F0',
 
         height: '300px',
         width: '200px',
@@ -19,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
     },
     eventHeader: {
-        borderBottom: 'solid',
+        borderBottom: 'groove',
         borderWidth: '1px'
     }, 
     eventTitle: {

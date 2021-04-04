@@ -1,16 +1,18 @@
 import React from 'react';
 import './App.css';
 import Register from './components/Register';
-import Login from './components/Login';
 import Profile from './components/Profile';
 import Timetables from './components/Timetables';
 import About from './components/About';
+import Update from './components/Update'
+import { AnimatePresence,  motion } from "framer-motion";
 
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
+  NavLink,
   useHistory,
 } from 'react-router-dom';
 
@@ -81,24 +83,45 @@ function LoginSection () {
     //if thing works we use the history to travel
     history.push('/timetables');
   }
-
+  // async function test() {
+  //   console.log('hi');
+  //   const username = document.getElementById('loginUsername').value;
+  //   const password = document.getElementById('loginPassword').value;
+  //   const data = {
+  //     username: username,
+  //     password: password
+  //   }
+  //   const options = {
+  //     method: 'POST',
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify(data)
+  //   }
+  //   const res = await fetch('http://localhost:5000/auth/login', options);
+  //   const resdata = await res.json();
+  //   console.log("Token: ", resdata);
+  // }
+  
   return (
-    <div id="container">
+    <motion.div id="container" initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
       <div id="info"> 
         <h2> Prolvan Timetabling</h2>
         <div> This is a timetabling service brought to you by Prolvan and co!</div>
       </div>
       <div className="loginPage">
         <h2>Login</h2>
-        <form onSubmit={submitLogin}>
+        <form>
           <TextField id="loginUsername" label="Username" variant="outlined" style={username}/>
           <TextField id="loginPassword" label="Password" variant="outlined" type="password" style={password} />
           <div className="loginButton">
-            {/* <Link to="/login" style={{ textDecoration: 'none' }}> */}
-              <Button variant="contained" color="primary" type='submit'>
+
+            <Link to="/timetables" style={{ textDecoration: 'none' }} onClick={submitLogin}>
+              <Button variant="contained" color="primary">
                 Login
               </Button>
-            {/* </Link> */}
+            </Link>
             <Link to="/register" style={{ textDecoration: 'none' }}>
               <Button variant="contained" color="secondary">
                 Register
@@ -120,7 +143,7 @@ function LoginSection () {
           }}
         />
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -128,12 +151,16 @@ function App () {
   return (
     <div>
       <Router>
+      <AnimatePresence>
       <Switch>
+      <Route path="/update">
+          <Update />
+        </Route>
+        <Route path="/timetables">
+          <Timetables />
+        </Route>
         <Route path="/register">
           <Register />
-        </Route>
-        <Route path="/login">
-          <Login />
         </Route>
         <Route path="/profile">
           <Profile />
@@ -141,13 +168,11 @@ function App () {
         <Route path="/about">
           <About />
         </Route>
-        <Route path="/timetables">
-          <Timetables />
-        </Route>
         <Route path="/">
           <LoginSection />
         </Route>
       </Switch>
+      </AnimatePresence>
     </Router>
     </div>
   );

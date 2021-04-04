@@ -3,6 +3,7 @@ import '../App.css';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Wave from 'react-wavify';
+import { motion } from "framer-motion";
 
 import {
     BrowserRouter as Router,
@@ -61,7 +62,7 @@ export default function () {
     }
 
     return (
-        <div>
+        <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
             <div id="RegisterPage">
                 <h2 id="RegisterTitle">Register here!</h2>
                 <form onSubmit={submitRego}>
@@ -77,7 +78,9 @@ export default function () {
                         <Button variant="contained" color="secondary">
                             Back
                         </Button>
-                    </Link>
+
+                    </Link> 
+
                     </div>
                 </form>
             </div>
@@ -94,6 +97,6 @@ export default function () {
                     }}
                 />
             </div>
-        </div>  
+        </motion.div>  
     );
 }
