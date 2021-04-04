@@ -55,7 +55,6 @@ function LoginSection () {
   return (
     <motion.div id="container" initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
       <div id="info"> 
-      
         <h2> Prolvan Timetabling</h2>
         <div> This is a timetabling service brought to you by Prolvan and co!</div>
       </div>
