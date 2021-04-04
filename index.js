@@ -28,6 +28,9 @@ let eventInfo = eventFunctions.eventInfo;
 let eventUpdate = eventFunctions.eventUpdate;
 let eventDelete = eventFunctions.eventDelete;
 
+// let helperFunctions = require('./backend/helpers');
+// let tokenToId = helperFunctions.convertTokenToId;
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -55,12 +58,15 @@ app.get('/test', (req, res) => {
   // });
 });
 
+// // helper function
+// app.get('/tokenToId', (req, res) => {
+//   tokenToId
+// });
+
 // auth functions
 app.post('/auth/login', (req, res) => {
-  let token;
   authLogin(req.body.username, req.body.password, async function(result) {
-    token = result;
-    res.json(token);
+    res.json(result);
   });
 });
 
@@ -113,8 +119,12 @@ app.get('/event', (req, res) => {
 app.get('/user', (req,res) => {
   userProfile(req.query.token, req.query.userId, async function(result) {
     res.json(result);
-  })
-})
+  });
+});
+
+app.put('/user', (req, res) => {
+  userUpdate(req.body.token, req.body.userId, req.body.userName, req.body.userPassword, req.body.src);
+});
 
 // authRegister('third', 'third');
 // authLogin('third', 'third');
@@ -126,7 +136,8 @@ app.get('/user', (req,res) => {
 // eventCreate('f9l6YIjWk8ZDTr0xEmzmYkgbwfZ8IYfi', '1', 'event4', '2', '16', '22', '2', 'commerce');
 // timetableAddEvent('f9l6YIjWk8ZDTr0xEmzmYkgbwfZ8IYfi', '1', '38428304', '99412559');
 
-timetableEvents('UgoIQ9dYpAiYlNQ2B3hZ3vb9j2N8VeLo', '1', '38428304');
+// userUpdate('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', null, 'newFifthpasstwo', 'newFifthSrctwo');
+// timetableEvents('UgoIQ9dYpAiYlNQ2B3hZ3vb9j2N8VeLo', '1', '38428304');
 
 // user functions
 // userProfile();

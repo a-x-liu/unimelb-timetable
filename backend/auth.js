@@ -9,7 +9,7 @@ const con = require('./database');
 let helpers = require('./helpers');
 let tokenCheck = helpers.tokenCheck;
 let generateToken = helpers.generateToken;
-
+let tokenToId = helpers.convertTokenToId;
 
 exports.authLogin = function(authName, authPassword, callback) {
     // console.log('auth login');
@@ -19,7 +19,7 @@ exports.authLogin = function(authName, authPassword, callback) {
     con.query(namePassword, function (err, res) {
         // console.log(namePassword);
         if (err) throw err;
-        console.log(res);
+        // console.log(res);
         let result = JSON.parse(JSON.stringify(res[0]));
         // passwords not matching
         if (result['password'] !== authPassword) {
@@ -32,11 +32,16 @@ exports.authLogin = function(authName, authPassword, callback) {
     let token = generateToken(32);
     let sqlUpdate = `UPDATE users SET user_token = "${token}" WHERE name = "${authName}";`;
     console.log(sqlUpdate);
+
     con.query(sqlUpdate, function(err, res) {
         if (err) throw err;
-        return callback(token);
-    })
-    
+
+        tokenToId(token, con, async function(result) {
+            console.log(result);
+            console.log(token, result);
+            return callback(token, result);
+        });
+    })    
 };
 
 exports.authRegister = function(authName, authPassword, callback) {

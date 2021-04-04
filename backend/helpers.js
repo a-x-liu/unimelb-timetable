@@ -3,7 +3,6 @@ exports.tokenCheck = function tokenCheck(token, con, id, callback) {
     const sqlGetToken = `SELECT user_token FROM users WHERE user_id = "${id}"`;
     con.query(sqlGetToken, function(err, res) {
         if (err) throw err;
-        console.log(res);
         let result = JSON.parse(JSON.stringify(res[0]));
         console.log('data token ' + result.user_token);
         console.log('pass through token ' + token);
@@ -14,6 +13,17 @@ exports.tokenCheck = function tokenCheck(token, con, id, callback) {
             return callback(true);
         }
     });
+}
+
+// function to get user id from a token
+exports.convertTokenToId = function convertTokenToId(token, con, callback) {
+    const getId = `SELECT user_id FROM users WHERE user_token = "${token}"`;
+    con.query(getId, function(err, res) {
+        if (err) throw err;
+        let result = JSON.parse(JSON.stringify(res[0]));
+        console.log('the user id is ' + result.user_id)
+        return callback(result.user_id);
+    })
 }
 
 // function to generate token
@@ -37,3 +47,4 @@ exports.generateId = function generateId(length) {
     }
     return b.join("");
 }
+
