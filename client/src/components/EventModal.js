@@ -67,7 +67,7 @@ export default function (props) {
         const data2 = {
             'token': token,
             'userId': 1,
-            'timetableId': 12994478,
+            'timetableId': window.localStorage.getItem('timetableId'),
             'eventId': window.localStorage.getItem("eventId"),
         }
 
