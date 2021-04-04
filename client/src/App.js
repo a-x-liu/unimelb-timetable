@@ -91,24 +91,38 @@ function LoginSection () {
     const resdata3 = await res3.json();
     window.localStorage.setItem("userId", resdata3);
 
-
-    const data2 = {
-      'token': window.localStorage.getItem("userToken"),
-      'userId': localStorage.getItem("userId"),
-      'timetableTitle': 'Test',
-      
-    }
-    const options2 = {
-      method: 'POST',
+    const options4 = {
+      method: 'GET',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(data2)
     }
-    const res2 = await fetch('http://localhost:5000/timetable', options2);
-    const resdata2 = await res2.json();
-    window.localStorage.setItem("timetableId", resdata2);
+ 
+    const res4 = await fetch(`http://localhost:5000/user/timetable?token=${localStorage.getItem("userToken")}&userId=${localStorage.getItem("userId")}`, options4);
+    const resdata4 = await res4.json();
+
+    if (resdata4 == 0) {// we create new timetable
+      const data2 = {
+        'token': window.localStorage.getItem("userToken"),
+        'userId': localStorage.getItem("userId"),
+        'timetableTitle': 'Test',
+        
+      }
+      const options2 = {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data2)
+      }
+      const res2 = await fetch('http://localhost:5000/timetable', options2);
+      const resdata2 = await res2.json();
+      window.localStorage.setItem("timetableId", resdata2);
+    } else { // we return an existing table
+      window.localStorage.setItem("timetableId", resdata4);
+    }
     
     //add error checks
     // setOpen(false);

@@ -46,12 +46,13 @@ export default function (props) {
     //     console.log(dimensions);
     // }
     
-
+    // const ref = React.useRef(null);
     // React.useEffect(() => {
+    //     window.getComputedStyle(ref.current);
     //     console.log('we are entering use event effect: ', id, title, day, start, end, description, type);
     //     console.log(document.getElementById(day+"-"+start));
     //     window.addEventListener('resize', handleResize);
-    //     setTimeout(handleResize(), 10000);
+    //     handleResize();
     //     return () => window.removeEventListener('resize', handleResize);
     // }, []);
         
