@@ -56,14 +56,24 @@ exports.userTimetable = function(token, userId, callback) {
             console.log('Invalid token');
             return;
         } else {
-            let sqlUserTimetable = `SELECT timetable_id FROM timetables WHERE user_id = "${userId}"`;
-            con.query(sqlUserTimetable, function(err, res) {
-                if (err) throw err;
-                console.log(res);
-                let result = JSON.parse(JSON.stringify(res[0]));
-                console.log(result);
-                return callback(result.timetable_id);
-            })
+            let sqlUserTimetableCount = `SELECT COUNT(timetable_id) FROM timetables WHERE user_id = "${userId}";`;
+            console.log(sqlUserTimetableCount);
+            con.query(sqlUserTimetableCount, function(err, res) {
+                let count = JSON.parse(JSON.stringify(res[0]));
+                if (count['COUNT(timetable_id)'] === 0) {
+                    console.log('hi');
+                    return callback(count['COUNT(timetable_id)']);
+                } else {
+                    let sqlUserTimetable = `SELECT timetable_id FROM timetables WHERE user_id = "${userId}"`;
+                    con.query(sqlUserTimetable, function(err, res) {
+                        if (err) throw err;
+                        // console.log(res);
+                        let result = JSON.parse(JSON.stringify(res[0]));
+                        // console.log(result);
+                        return callback(result.timetable_id);
+                    })
+                }
+            });
         }
     });
 };
