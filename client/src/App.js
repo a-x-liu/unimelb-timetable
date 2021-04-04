@@ -78,6 +78,25 @@ function LoginSection () {
     const resdata = await res.json();
     console.log("hello there " + resdata);
     window.localStorage.setItem("userToken", resdata);
+    
+    const data2 = {
+      token: window.localStorage.getItem("userToken"),
+      userId: 1,
+      timetableTitle: 'Test',
+      
+    }
+    const options2 = {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data2)
+    }
+    const res2 = await fetch('http://localhost:5000/timetable/create', options2);
+    const resdata2 = await res2.json();
+    window.localStorage.setItem("timetableId", resdata2);
+    
     //add error checks
     // setOpen(false);
     //if thing works we use the history to travel

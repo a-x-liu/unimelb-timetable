@@ -101,6 +101,7 @@ export default function (props) {
             <Button onClick={close} variant="contained" color="secondary">
                 Cancel
             </Button>
+
             <Button onClick={submit} variant="contained" color="primary">
                 Create Timetable
             </Button>
