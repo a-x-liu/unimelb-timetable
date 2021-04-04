@@ -1,6 +1,7 @@
 // function to check if tokens match
 exports.tokenCheck = function tokenCheck(token, con, id, callback) {
     const sqlGetToken = `SELECT user_token FROM users WHERE user_id = "${id}"`;
+    console.log(sqlGetToken);
     con.query(sqlGetToken, function(err, res) {
         if (err) throw err;
         let result = JSON.parse(JSON.stringify(res[0]));

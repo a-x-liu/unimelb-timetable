@@ -194,7 +194,7 @@ html{
 }
 
 #profileInfo {
-  margin-top: 5%;
+  margin-top: 3%;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -245,6 +245,8 @@ body {
 
 #timetable {
   margin-left: 2vh;
+  width: 100%;
+  height: 100%;
 }
 
 #aboutDescription{
@@ -254,4 +256,8 @@ body {
 
 #aboutTitle {
   margin-bottom: 0;
+}
+
+.eventTimes {
+  width: 100%;
 }

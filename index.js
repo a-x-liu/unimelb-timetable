@@ -67,6 +67,7 @@ app.get('/test', (req, res) => {
 //////////////////////////////////
 app.post('/auth/login', (req, res) => {
   authLogin(req.body.username, req.body.password, async function(result) {
+    console.log('BACKEND BACKEND');
     res.json(result);
   });
 });
@@ -175,8 +176,9 @@ app.put('/user', (req, res) => {
 // timetableAddEvent('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', '91679784', '55488246');
 // timetableDelete('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', )
 // userUpdate('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', null, 'newFifthpasstwo', 'newFifthSrctwo');
+
 // timetableEvents('UgoIQ9dYpAiYlNQ2B3hZ3vb9j2N8VeLo', '1', '38428304');
-// userChartTotalTime('gd3YIhQlJkETtW5PzxUlW6iLiVyMnVhd', '1', '38428304');
+
 
 // timetableUpdate('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', '9318884', 'newTimetable');
 // timetableDelete('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', '56045661');

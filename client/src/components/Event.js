@@ -6,13 +6,12 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles((theme) => ({
     event: {
-        position: 'absolute',
-        zIndex: '1000',
-        borderStyle: 'groove',
+
+        borderStyle: 'solid',
+
         borderRadius: '10px',
         borderWidth: '1px',
         backgroundColor: '#E6D7F0',
-
 
         height: '300px',
         width: '200px',
@@ -31,27 +30,30 @@ const useStyles = makeStyles((theme) => ({
 
 export default function (props) {
     const classes = useStyles();
-    const {id, title, day, start, end, description, type} = props
+    const {eventState, id, title, day, start, end, description, type, load} = props
 
-    const [dimensions, setDimensions] = React.useState({ 
+    const [dimensions, setDimensions] = React.useState({
     });
 
-    function handleResize () {
-        console.log(day+"-"+start, document.getElementById(day+"-"+start).clientWidth, "translate(" + document.getElementById(day+"-"+start).offsetLeft + "px, " + document.getElementById(day+"-"+start).offsetTop + "px)");
-        setDimensions({
-            transform: "translate(" + document.getElementById(day+"-"+start).offsetLeft + "px, " + document.getElementById(day+"-"+start).offsetTop + "px)",
-            width: document.getElementById(day+"-"+start).clientWidth,
-            height: (document.getElementById(day+"-"+start).clientHeight * (end - start)) + (end - start) + "px",
-        });
-        console.log(dimensions);
-    }
+    // function handleResize () {
+    //     console.log(document.getElementById(day+"-"+start));
+    //     console.log(day+"-"+start, document.getElementById(day+"-"+start), "translate(" + document.getElementById(day+"-"+start) + "px, " + document.getElementById(day+"-"+start) + "px)");
+    //     setDimensions({
+    //         transform: "translate(" + document.getElementById(day+"-"+start).offsetLeft + "px, " + document.getElementById(day+"-"+start).offsetTop + "px)",
+    //         width: document.getElementById(day+"-"+start).clientWidth,
+    //         height: (document.getElementById(day+"-"+start).clientHeight * (end - start)) + (end - start) + "px",
+    //     });
+    //     console.log(dimensions);
+    // }
+    
 
-    React.useEffect(() => {
-        console.log('we are entering use effect')
-        window.addEventListener('resize', handleResize);
-        handleResize();
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
+    // React.useEffect(() => {
+    //     console.log('we are entering use event effect: ', id, title, day, start, end, description, type);
+    //     console.log(document.getElementById(day+"-"+start));
+    //     window.addEventListener('resize', handleResize);
+    //     handleResize();
+    //     return () => window.removeEventListener('resize', handleResize);
+    // }, [eventState]);
         
 
     return (
