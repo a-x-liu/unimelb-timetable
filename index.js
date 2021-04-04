@@ -81,6 +81,7 @@ app.post('/timetable', (req, res) => {
 });
 
 app.get('/timetable', (req, res) => {
+  // console.log(req);
   timetableInfo(req.query.token, req.query.userId, req.query.timetableId, async function(result) {
     res.json(result);
   });

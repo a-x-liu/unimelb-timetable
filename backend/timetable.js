@@ -61,7 +61,7 @@ exports.timetableAddEvent = function(token, userId, timetableId, eventId) {
             WHERE event_id = ${eventId};`
             con.query(query, function(err, res) {
                 if (err) throw err;
-                let result = JSON.parse(JSON.stringify(res[0]));
+                let result = JSON.parse(JSON.stringify(res));
                 console.log(result);
                 // return callback(result.title, result.event_id);
             })

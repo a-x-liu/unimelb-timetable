@@ -194,15 +194,27 @@ function TimeCells (props) {
 
 export default function () {
     const classes = useStyles();
-    const[eventState, setEventState] = React.useState([{
-        id: 1,
-        title: 'test',
-        day: 4,
-        start: 6,
-        end: 12,
-        description: "we are testing smthing",
-        type: 0
-    }]);
+    const[eventState, setEventState] = React.useState([]);
+
+    async function load () {
+        const options = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }
+
+        console.log("passing in:" + localStorage.getItem('userToken'));
+
+        const res = await fetch('http://localhost:5000/timetable?token=' + localStorage.getItem('userToken') +"&userId="+ 1 + "&timetableId=" + 38428304, options);
+        const data = await res.json();
+        console.log(data);
+        setEventState(data);
+    }
+
+    React.useEffect(() => {
+        load();
+    }, []);
 
     function addEvent ()    {
         //we should fetch the information here
