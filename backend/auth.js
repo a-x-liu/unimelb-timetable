@@ -19,7 +19,7 @@ exports.authLogin = function(authName, authPassword, callback) {
     con.query(namePassword, function (err, res) {
         // console.log(namePassword);
         if (err) throw err;
-        // console.log(res);
+        console.log(res);
         let result = JSON.parse(JSON.stringify(res[0]));
         // passwords not matching
         if (result['password'] !== authPassword) {
@@ -35,12 +35,12 @@ exports.authLogin = function(authName, authPassword, callback) {
 
     con.query(sqlUpdate, function(err, res) {
         if (err) throw err;
-
-        tokenToId(token, con, async function(result) {
-            console.log(result);
-            console.log(token, result);
-            return callback(token, result);
-        });
+        return callback(token);
+        // tokenToId(token, con, async function(result) {
+        //     console.log(result);
+        //     console.log(token, result);
+            
+        // });
     })    
 };
 
