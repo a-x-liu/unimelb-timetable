@@ -158,9 +158,9 @@ app.put('/user', (req, res) => {
 // eventCreate('f9l6YIjWk8ZDTr0xEmzmYkgbwfZ8IYfi', '1', 'event4', '2', '16', '22', '2', 'commerce');
 // timetableAddEvent('f9l6YIjWk8ZDTr0xEmzmYkgbwfZ8IYfi', '1', '38428304', '99412559');
 
-// userUpdate('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', null, 'newFifthpasstwo', 'newFifthSrctwo');
+
 // timetableEvents('UgoIQ9dYpAiYlNQ2B3hZ3vb9j2N8VeLo', '1', '38428304');
-// userChartTotalTime('gd3YIhQlJkETtW5PzxUlW6iLiVyMnVhd', '1', '38428304');
+
 
 // user functions
 // userProfile();
