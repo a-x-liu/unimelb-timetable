@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
         borderWidth: '1px',
         backgroundColor: '#E6D7F0',
 
-
         height: '300px',
         width: '200px',
         // marginLeft: '100px',
