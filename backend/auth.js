@@ -38,7 +38,7 @@ exports.authLogin = function(authName, authPassword, callback) {
     
 };
 
-exports.authRegister = function(authName, authPassword) {
+exports.authRegister = function(authName, authPassword, callback) {
     // console.log('auth register');
 
     // usernames must be unique
@@ -66,6 +66,7 @@ exports.authRegister = function(authName, authPassword) {
         console.log(sqlInsert);
         con.query(sqlInsert, function (err, res) {
             if (err) throw err;
+            return callback(currAmount + 1);
         });
     });
 };
