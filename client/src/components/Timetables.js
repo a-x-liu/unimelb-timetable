@@ -53,9 +53,6 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-
- 
-
   const useStyles2 = makeStyles((theme) => ({
     root: {
       display: 'flex',

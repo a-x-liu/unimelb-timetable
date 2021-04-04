@@ -203,25 +203,25 @@ export default function () {
     const classes = useStyles();
     const[eventState, setEventState] = React.useState([]);
 
-    async function load () {
-        const options = {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        }
+    // async function load () {
+    //     const options = {
+    //         method: 'GET',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         }
+    //     }
 
-        console.log("passing in:" + localStorage.getItem('userToken'));
+    //     console.log("passing in:" + localStorage.getItem('userToken'));
 
-        const res = await fetch('http://localhost:5000/timetable?token=' + localStorage.getItem('userToken') +"&userId="+ 1 + "&timetableId=" + 38428304, options);
-        const data = await res.json();
-        console.log(data);
-        setEventState(data);
-    }
+    //     const res = await fetch('http://localhost:5000/timetable?token=' + localStorage.getItem('userToken') +"&userId="+ 1 + "&timetableId=" + 38428304, options);
+    //     const data = await res.json();
+    //     console.log(data);
+    //     setEventState(data);
+    // }
 
-    React.useEffect(() => {
-        load();
-    }, []);
+    // React.useEffect(() => {
+    //     load();
+    // }, []);
 
     function addEvent ()    {
         //we should fetch the information here
