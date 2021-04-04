@@ -100,62 +100,57 @@ const useStyles = makeStyles((theme) => ({
     };
     return (
         <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}> 
-         <div className={classes.root}>
-            <AppBar position="static" style={{boxShadow:'none'}}>
-                <Toolbar>
-
-                <Link to="/timetables" style={{ color: 'black', textDecoration: 'none', flex:1 }}>
-                    <Typography variant="h6" className={classes.title} style={{ fontWeight: "bold"}}>
-                        Prolvan Timetabling
-                    </Typography>
-                    
-                </Link>
-                <Link to="/about" style={{ color: 'black', textDecoration: 'none'}}>
-                  <Button variant="h9" className={classes.title} style={{ maxWidth: '150px' }}>
-                      <span className="menuElement">About us</span>
-                  </Button>
-                </Link>
-                {auth && (
-                    <div>
-                    
-                    <IconButton
-                        aria-label="account of current user"
-                        aria-controls="menu-appbar"
-                        aria-haspopup="true"
-                        onClick={handleMenu}
-                        color="black"
-                    >
-                        <AccountCircle />
-                    </IconButton>
-
-                    <Menu
-                        id="menu-appbar"
-                        anchorEl={anchorEl}
-                        anchorOrigin={{
-                        vertical: 'top',
-                        horizontal: 'right',
-                        }}
-                        keepMounted
-                        transformOrigin={{
-                        vertical: 'top',
-                        horizontal: 'right',
-                        }}
-                        open={open}
-                        onClose={handleClose}
-                    >
-                        <Link to="/profile" style={{ textDecoration: 'none', color:'black' }}>
-                            <MenuItem onClick={handleClose}>Profile</MenuItem>
-                        </Link>
-                        <Link to="/" style={{ textDecoration: 'none', color:'red' }}>
-                            <MenuItem onClick={handleClose}>Logout</MenuItem>
-                        </Link>
-                    </Menu>
-                    
-                    </div>
-                )}
-                </Toolbar>
-            </AppBar>
-
+          <div className={classes.root}>
+                <AppBar position="static" style={{boxShadow:'none'}}>
+                    <Toolbar>
+                    <Link style={{flex:1}}></Link>
+                    <Link to="/about" style={{ color: 'black', textDecoration: 'none' }}>
+                        <Button variant="h9" className={classes.title} style={{ maxWidth: '150px' }}>
+                            <span className="menuElement">About us</span>
+                        </Button>
+                    </Link>
+                    {auth && (
+                        <div>
+                        <IconButton
+                            aria-label="account of current user"
+                            aria-controls="menu-appbar"
+                            aria-haspopup="true"
+                            onClick={handleMenu}
+                            color="black"
+                        >
+                            <AccountCircle />
+                        </IconButton>
+                        
+                        <Menu
+                            id="menu-appbar"
+                            anchorEl={anchorEl}
+                            anchorOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                            }}
+                            keepMounted
+                            transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                            }}
+                            open={open}
+                            onClose={handleClose}
+                        >
+                            <Link to="/profile" style={{ textDecoration: 'none', color:'black' }} >
+                                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                            </Link>
+                            <Link to="/" style={{ textDecoration: 'none', color:'red' }}>
+                                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                            </Link>
+                        </Menu>
+                        
+                        </div>
+                    )}
+                    </Toolbar>
+                </AppBar>
+             </div>
+        <div className={classes2.root}>
+            
             <Drawer
               className={classes2.drawer}
               variant="permanent"
@@ -163,7 +158,13 @@ const useStyles = makeStyles((theme) => ({
                 paper: classes2.drawerPaper,
               }}
             >
-              <Toolbar />
+              <Toolbar>
+                    <Link to="/timetables" style={{color: 'black', textDecoration: 'none' }}>
+                        <Typography variant="h6" className={classes.title} style={{ fontWeight: "bold", fontFamily: 'Manjari'}}>
+                            Prolvan
+                        </Typography>
+                    </Link>
+              </Toolbar>
               <div className={classes2.drawerContainer}>
                 <List>
                   {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
