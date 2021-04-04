@@ -66,7 +66,7 @@ export default function () {
                 'Content-Type': 'application/json',
             }
         }
-        const res = await fetch('http://localhost:5000/timetable/chart/totalTime?token=' + localStorage.getItem('userToken') + '&timetableId=' + localStorage.getItem('timetableId') + "&userId=" + localStorage.getItem("userId"), options);
+        const res = await fetch('https://apple-surprise-39339.herokuapp.com/timetable/chart/totalTime?token=' + localStorage.getItem('userToken') + '&timetableId=' + localStorage.getItem('timetableId') + "&userId=" + localStorage.getItem("userId"), options);
         const data = await res.json();
         setLine(data)
         console.log(data);
@@ -79,7 +79,7 @@ export default function () {
                 'Content-Type': 'application/json',
             }
         }
-        const res = await fetch('http://localhost:5000/timetable/chart/percentTime?token=' + localStorage.getItem('userToken') + '&timetableId=' + localStorage.getItem('timetableId') + "&userId=" + localStorage.getItem("userId"), options);
+        const res = await fetch('https://apple-surprise-39339.herokuapp.com/timetable/chart/percentTime?token=' + localStorage.getItem('userToken') + '&timetableId=' + localStorage.getItem('timetableId') + "&userId=" + localStorage.getItem("userId"), options);
         const data = await res.json();
         setData(data)
 

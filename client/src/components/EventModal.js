@@ -54,7 +54,7 @@ export default function (props) {
             body: JSON.stringify(data)
         }
 
-        const res = await fetch('http://localhost:5000/event', options);
+        const res = await fetch('https://apple-surprise-39339.herokuapp.com/event', options);
         const resdata = await res.json();
         console.log(resdata);
         window.localStorage.setItem("eventId", resdata);
@@ -76,7 +76,7 @@ export default function (props) {
             },
             body: JSON.stringify(data2)
         }
-        fetch('http://localhost:5000/timetable/addEvent', options2);
+        fetch('https://apple-surprise-39339.herokuapp.com/timetable/addEvent', options2);
         console.log(v);
         alert("Please wait at least one minute for your data to appear.");
         setTimeout(v, 10000);

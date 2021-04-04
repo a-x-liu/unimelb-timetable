@@ -56,7 +56,7 @@ export default function () {
           body: JSON.stringify(data)
         }
      
-        const res = await fetch('http://localhost:5000/auth/register', options);
+        const res = await fetch('https://apple-surprise-39339.herokuapp.com/auth/register', options);
         const resdata = await res.json();
         history.push('/login');
     }
