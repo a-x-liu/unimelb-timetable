@@ -89,11 +89,11 @@ export default function (props) {
         </div>
             </DialogContent>
             <DialogActions>
-            <Button onClick={close} color="primary">
+            <Button onClick={close} variant="contained" color="secondary">
                 Cancel
             </Button>
-            <Button onClick={close} color="primary">
-                Subscribe
+            <Button onClick={close} variant="contained" color="primary">
+                Create Timetable
             </Button>
             </DialogActions>
         </Dialog>

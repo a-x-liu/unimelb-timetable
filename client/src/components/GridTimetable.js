@@ -7,29 +7,36 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
     timetableBox: {
-        position: 'relative',
-        height: '500px',
+        position: 'absolute',
         width: '80%',
+        height: '65%',
+        overflowX: 'hidden',
         overflowY: 'scroll',
-        overflowX: 'scroll',
-        borderStyle: 'solid'
+        marginLeft: '5vh',
+        border: 'none'
     },
     row: {
         display: 'flex',
-        backgroundColor: 'white',
-        height:'50px'
+        backgroundColor: '#f2f5f0',
+        height:'50px',
+        borderBottom: 'groove',
+        
     },
     cells: {
         display: 'flex',
         width: '200px',
-        backgroundColor: 'aqua',
-        borderStyle: 'solid',
-        borderWidth: '1px'
+        backgroundColor: '#f2f5f0',
+        borderRight: 'groove',
+        borderWidth: '1px',
+        alignItems: 'flex-start',
+        textAlign: 'right',
+        paddingLeft: '5vh'
         //maybe set a minwidth here
     },
     label: {
         width: '100px',
-        userSelect: 'none'
+        userSelect: 'none',
+        borderRight: 'groove'
     },
     paper: {
         position: 'absolute',
@@ -56,15 +63,15 @@ function Label (props) {
 function Cell (props) {
     const classes = useStyles();
     const { day, time, eventState, updateState } = props;
-    const [colour, setBackground] = React.useState('aqua');
+    const [colour, setBackground] = React.useState('#f2f5f0');
     const [togglestate, setState] = React.useState(false);
 
     function inside () {
-        setBackground('black');
+        setBackground('#D3EAFF');
     }
 
     function outside () {
-        setBackground('aqua');
+        setBackground('#f2f5f0');
     }
 
     const background = {
