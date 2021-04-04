@@ -68,7 +68,9 @@ app.post('/auth/logout', (req, res) => {
 });
 
 app.post('/auth/register', (req, res) => {
-  authRegister(req.body.username, req.body.password);
+  authRegister(req.body.username, req.body.password, async function(result) {
+    res.json(result);
+  });
 });
 
 
