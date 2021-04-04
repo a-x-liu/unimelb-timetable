@@ -8,17 +8,8 @@
 const con = require('./database');
 let helpers = require('./helpers');
 let tokenCheck = helpers.tokenCheck;
-
-// function to generate token
-function generateToken(length) {
-    var a = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".split("");
-    var b = [];  
-    for (var i=0; i < length; i++) {
-        var j = (Math.random() * (a.length-1)).toFixed(0);
-        b[i] = a[j];
-    }
-    return b.join("");
-}
+let generateToken = helpers.generateToken;
+let tokenToId = helpers.convertTokenToId;
 
 exports.authLogin = function(authName, authPassword, callback) {
     // console.log('auth login');
@@ -28,6 +19,7 @@ exports.authLogin = function(authName, authPassword, callback) {
     con.query(namePassword, function (err, res) {
         // console.log(namePassword);
         if (err) throw err;
+        // console.log(res);
         let result = JSON.parse(JSON.stringify(res[0]));
         // passwords not matching
         if (result['password'] !== authPassword) {
@@ -38,24 +30,30 @@ exports.authLogin = function(authName, authPassword, callback) {
 
     // inserting token into sql
     let token = generateToken(32);
-    let sqlUpdate = `UPDATE users SET user_token = "${token}" WHERE name = "${authName}"`;
+    let sqlUpdate = `UPDATE users SET user_token = "${token}" WHERE name = "${authName}";`;
     console.log(sqlUpdate);
+
     con.query(sqlUpdate, function(err, res) {
         if (err) throw err;
-        // return callback(token);
-    })
-    
+
+        tokenToId(token, con, async function(result) {
+            console.log(result);
+            console.log(token, result);
+            return callback(token, result);
+        });
+    })    
 };
 
-exports.authRegister = function(authName, authPassword) {
+exports.authRegister = function(authName, authPassword, callback) {
     // console.log('auth register');
 
     // usernames must be unique
-    let sqlCountName = `SELECT COUNT(name) FROM users WHERE name = "${authName}"`;
+    let sqlCountName = `SELECT COUNT(name) FROM users WHERE name = "${authName}";`;
     con.query(sqlCountName, function(err, res) {
         if (err) throw err;
+        console.log(res);
         let names = JSON.parse(JSON.stringify(res[0]));
-        console.log(names['COUNT(name)']);
+        // console.log(names['COUNT(name)']);
         if (names['COUNT(name)'] !== 0) {
             console.log('username already taken');
             return;
@@ -66,8 +64,9 @@ exports.authRegister = function(authName, authPassword) {
     let sqlLength = `SELECT COUNT(*) FROM users`;
     con.query(sqlLength, function(err, res) {
         if (err) throw err;
+        console.log(res);
         let users = JSON.parse(JSON.stringify(res[0]));
-        console.log(users['COUNT(*)']);
+        // console.log(users['COUNT(*)']);
         let currAmount = users['COUNT(*)'];
 
         // inserting all the info to sql database
@@ -75,6 +74,7 @@ exports.authRegister = function(authName, authPassword) {
         console.log(sqlInsert);
         con.query(sqlInsert, function (err, res) {
             if (err) throw err;
+            return callback(currAmount + 1);
         });
     });
 };
@@ -95,6 +95,4 @@ exports.authLogout = function(token, userId) {
             });
         }
     });
-
-
 };
