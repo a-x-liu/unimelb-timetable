@@ -87,7 +87,7 @@ function LoginSection () {
       },
     }
  
-    const res3 = await fetch(`http://localhost:5000/tokenToId?token=${localStorage.getItem("userToken")}`, options3);
+    const res3 = await fetch(`https://apple-surprise-39339.herokuapp.com/tokenToId?token=${localStorage.getItem("userToken")}`, options3);
     const resdata3 = await res3.json();
     window.localStorage.setItem("userId", resdata3);
 
@@ -99,7 +99,7 @@ function LoginSection () {
       },
     }
  
-    const res4 = await fetch(`http://localhost:5000/user/timetable?token=${localStorage.getItem("userToken")}&userId=${localStorage.getItem("userId")}`, options4);
+    const res4 = await fetch(`https://apple-surprise-39339.herokuapp.com/user/timetable?token=${localStorage.getItem("userToken")}&userId=${localStorage.getItem("userId")}`, options4);
     const resdata4 = await res4.json();
 
     if (resdata4 == 0) {// we create new timetable
@@ -117,7 +117,7 @@ function LoginSection () {
         },
         body: JSON.stringify(data2)
       }
-      const res2 = await fetch('http://localhost:5000/timetable', options2);
+      const res2 = await fetch('https://apple-surprise-39339.herokuapp.com/timetable', options2);
       const resdata2 = await res2.json();
       window.localStorage.setItem("timetableId", resdata2);
     } else { // we return an existing table
