@@ -74,7 +74,7 @@ function LoginSection () {
       body: JSON.stringify(data)
     }
  
-    const res = await fetch('http://localhost:5000/auth/login', options);
+    const res = await fetch('https://apple-surprise-39339.herokuapp.com/auth/login', options);
     const resdata = await res.json();
     console.log("hello there " + resdata);
     window.localStorage.setItem("userToken", resdata);
