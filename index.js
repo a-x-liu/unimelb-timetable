@@ -17,7 +17,6 @@ let timetableInfo = timetableFunctions.timetableInfo;
 let timetableUpdate = timetableFunctions.timetableUpdate;
 let timetableDelete = timetableFunctions.timetableDelete;
 let timetableAddEvent = timetableFunctions.timetableAddEvent;
-let timetableDeleteEvent = timetableFunctions.timetableDeleteEvent;
 let timetableEvents = timetableFunctions.timetableEvents;
 let timetablePercentTime = timetableFunctions.timetablePercentTime;
 let timetableTotalTime = timetableFunctions.timetableTotalTime;
@@ -95,9 +94,19 @@ app.post('/timetable', (req, res) => {
 
 app.get('/timetable', (req, res) => {
   // console.log(req);
-  timetableInfo(req.query.token, req.query.userId, req.query.timetableId, async function(result) {
-    res.json(result);
-  });
+  timetableInfo(req.query.token, req.query.userId, req.query.timetableId);
+});
+
+app.put('/timetable', (req, res) => {
+  timetableUpdate(req.body.token, req.body.userId, req.body.timetableId, req.body.newTitle);
+});
+
+app.delete('/timetable', (req, res) => {
+  timetableDelete(req.query.token, req.query.userId, req.query.timetableId);
+});
+
+app.post('/timetable/addEvent', (req, res) => {
+  timetableAddEvent(req.body.token, req.body.userId, req.body.timetableId, req.body.eventId);
 });
 
 app.get('/timetable/events', (req, res) => {
@@ -135,6 +144,14 @@ app.get('/event', (req, res) => {
   });
 });
 
+app.put('/event', (req, res) => {
+  eventUpdate(req.body.token, req.body.userId, req.body.eventId, req.body.eventTitle, req.body.eventDay, req.body.eventStartTime, req.body.eventEndTime, req.body.eventType, req.body.eventDescription);
+})
+
+app.delete('/event', (req, res) => {
+  eventDelete(req.query.token, req.query.userId, req.query.eventId);
+})
+
 //////////////////////////////////
 // user functions
 //////////////////////////////////
@@ -154,37 +171,20 @@ app.put('/user', (req, res) => {
 // authLogin('fifth', 'fifth');
 // timetableInfo('f9l6YIjWk8ZDTr0xEmzmYkgbwfZ8IYfi', '1', '38428304');
 // userProfile('FXRdZLMEt7ljPtVDjLWIBn76NWFfZXpG', '2)');
-// timetableCreate('KhORiIVOo7nucPpnLLpfZhFtA7BK2Xle', '1', 'testTimetable');
-// eventCreate('f9l6YIjWk8ZDTr0xEmzmYkgbwfZ8IYfi', '1', 'event4', '2', '16', '22', '2', 'commerce');
-// timetableAddEvent('f9l6YIjWk8ZDTr0xEmzmYkgbwfZ8IYfi', '1', '38428304', '99412559');
-
+// timetableCreate('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', 'WOWOWOW');
+// eventCreate('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', 'event5', '2', '16', '22', '2', 'commerce');
+// timetableAddEvent('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', '91679784', '55488246');
+// timetableDelete('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', )
+// userUpdate('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', null, 'newFifthpasstwo', 'newFifthSrctwo');
 
 // timetableEvents('UgoIQ9dYpAiYlNQ2B3hZ3vb9j2N8VeLo', '1', '38428304');
 
 
-// user functions
-// userProfile();
-// userUpdate();
-// userChartPercentTime();
-// userChartTotalTime();
+// timetableUpdate('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', '9318884', 'newTimetable');
+// timetableDelete('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', '56045661');
+// timetableDeleteEvent('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', '71636513');
 
-
-// timetable functions
-// timetableCreate();
-// timetableInfo();
-// timetableUpdate();
-// timetableDelete();
-// timetableAddEvent();
-// timetableDeleteEvent();
-
-
-// event functions
-// eventCreate();
-// eventInfo();
-// eventUpdate();
-// eventDelete();
-
-
+// eventUpdate('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', '82548946', 'new Title', '4', '7', null, '1', 'new desc');
 
 
 
