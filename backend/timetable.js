@@ -103,8 +103,8 @@ exports.timetableAddEvent = function(token, userId, timetableId, eventId) {
             // console.log(query);
             con.query(query, function(err, res) {
                 if (err) throw err;
-                // console.log('here');
-                let result = JSON.parse(JSON.stringify(res));
+                console.log('here');
+                // let result = JSON.parse(JSON.stringify(res));
                 // console.log(result);
             })
         }

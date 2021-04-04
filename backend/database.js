@@ -4,7 +4,7 @@
 
 const mysql = require('mysql');
 
-module.exports = mysql.createConnection({
+module.exports = mysql.createPool({
     host: 'us-cdbr-east-03.cleardb.com',
     user: 'b0565d146d2ba7',
     password: 'bab97822',

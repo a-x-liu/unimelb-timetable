@@ -92,6 +92,7 @@ function Cell (props) {
     function handleDragEnd () {
         console.log("day: " + day + " time: " + time);
         showModal();
+        console.log(togglestate);
     }
 
     const showModal = () => {
@@ -99,14 +100,6 @@ function Cell (props) {
     };
 
     const hideModal = () => {
-        //we have to collect the data here and check that everything is g
-        //if it is g we should update the state of the events
-        const title = document.getElementById('eventTitle').value;
-        const start = document.getElementById('eventStart').value;
-        const end = document.getElementById('eventEnd').value;
-        const des = document.getElementById('eventDescription').value;
-        console.log(title, start, end, des);
-
         setState(false);
     };
 
@@ -119,7 +112,7 @@ function Cell (props) {
         style={background}
         time={time} day={day} className={classes.cells}
         id={day + "-" + time}>
-        <Modal open={showModal} close={hideModal} v={togglestate}/>
+        <Modal open={togglestate} close={hideModal} v={updateState}/>
         {/* { eventState.map((eventState) => {
             if (day == eventState.day && time == eventState.time_start) {
                 return <Event key={eventState.event_id} id={eventState.event_id} title={eventState.title} day={eventState.day} start={eventState.time_start} end={eventState.time_end} description={eventState.description} type={eventState.type}/>
@@ -210,24 +203,6 @@ function TimeCells (props) {
     );
 }
 
-async function firstRender () {
-    console.log("we are doing the first render");
-    const options = {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    }
-
-    console.log("passing in:" + localStorage.getItem('userToken'));
-
-    const res = await fetch('http://localhost:5000/timetable/events?token=' + localStorage.getItem('userToken') +"&userId="+ 1 + "&timetableId=" + 38428304, options);
-    const data = await res.json();
-    console.log("first render is rreturning: " + data);
-    return data;
-}
-
-
 export default function () {
     const classes = useStyles();
     const[eventState, updateState] = React.useState([]);
@@ -245,7 +220,7 @@ export default function () {
 
         console.log("passing in:" + localStorage.getItem('userToken'));
 
-        const res = await fetch('http://localhost:5000/timetable/events?token=' + localStorage.getItem('userToken') +"&userId="+ 1 + "&timetableId=" + 38428304, options);
+        const res = await fetch('http://localhost:5000/timetable/events?token=' + localStorage.getItem('userToken') + '&timetableId=' + 12994478 + "&userId=" + 1, options);
         const data = await res.json();
         console.log(data);
         updateState(data);    
@@ -254,27 +229,14 @@ export default function () {
 
     
     React.useEffect(async () => {
-        const options = {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        }
-
-
-        console.log("passing in:" + localStorage.getItem('userToken'));
-
-        const res = await fetch('http://localhost:5000/timetable/events?token=' + localStorage.getItem('userToken') +"&userId="+ 1 + "&timetableId=" + 38428304, options);
-        const data = await res.json();
-        console.log(data);
-        updateState(data);    
+        load();
     }, []);
 
     return (
         <div className="eventTimes">
             <div className={classes.timetableBox}>
-                <LabelRow eventState={eventState} updateEvent={load}></LabelRow>
-                <TimeCells></TimeCells>
+                <LabelRow></LabelRow>
+                <TimeCells  eventState={eventState} updateEvent={load}></TimeCells>
 
             </div>
             <div className={classes.eventsDiv}>
