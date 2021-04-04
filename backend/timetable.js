@@ -56,15 +56,38 @@ exports.timetableEvents = function(token, userId, timetableId, callback) {
     });
 };
 
-exports.timetableUpdate = function(token, userId, timetableId, newTitle) {
+exports.timetableUpdate = function(token, userId, timetableId, newTitle, callback) {
     // console.log('timetable update');
+    tokenCheck(token, con, userId, async function(result) {
+        if (!result) {
+            console.log('Invalid token');
+            return;
+        } else {
+            let sqlTimetableUpdate = `UPDATE timetables SET title = "${newTitle}" WHERE timetable_id = "${timetableId}";`;
+            con.query(sqlTimetableUpdate, function(err, res) {
+                if (err) throw err;
+            })
+        }
+    });
 };
 
-exports.timetableDelete = function(token, userId, userID, timetableId) {
+exports.timetableDelete = function(token, userId, timetableId) {
     // console.log('timetable delete');
-    const delete1 = `DELETE FROM events WHERE timetable_id = 'timetable_id;`
-    
-    const delete2= `DELETE FROM timetables WHERE timetable_id = 'timetable_id;`
+    tokenCheck(token, con, userId, async function(result) {
+        if (!result) {
+            console.log('Invalid token');
+            return;
+        } else {
+            const deleteEvents = `DELETE FROM events WHERE timetable_id = "${timetableId}"`;
+            const deleteTimetable = `DELETE FROM timetables WHERE timetable_id = "${timetableId}"`;
+            con.query(deleteEvents, function(err, res) {
+                if (err) throw err;
+            });
+            con.query(deleteTimetable, function(err, res) {
+                if (err) throw err;
+            })
+        }
+    });
 };
 
 exports.timetableAddEvent = function(token, userId, timetableId, eventId) {
@@ -77,20 +100,15 @@ exports.timetableAddEvent = function(token, userId, timetableId, eventId) {
             const query = `UPDATE events
             SET timetable_id = "${timetableId}"
             WHERE event_id = "${eventId}"`;
-            console.log(query);
+            // console.log(query);
             con.query(query, function(err, res) {
                 if (err) throw err;
                 // console.log('here');
                 let result = JSON.parse(JSON.stringify(res));
                 // console.log(result);
-                return callback(result.title, result.event_id);
             })
         }
     });
-};
-
-exports.timetableDeleteEvent = function(token, timetableId, eventId) {
-    // console.log('timetable delete event');
 };
 
 exports.timetablePercentTime = function(token, userId, timetableId, callback) {
