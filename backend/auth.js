@@ -9,7 +9,7 @@ const con = require('./database');
 let helpers = require('./helpers');
 let tokenCheck = helpers.tokenCheck;
 let generateToken = helpers.generateToken;
-let tokenToId = helpers.convertTokenToId;
+let tokenToId = helpers.tokenToId;
 
 exports.authLogin = function(authName, authPassword, callback) {
     // console.log('auth login');
