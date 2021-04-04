@@ -19,6 +19,7 @@ exports.authLogin = function(authName, authPassword, callback) {
     con.query(namePassword, function (err, res) {
         // console.log(namePassword);
         if (err) throw err;
+        console.log(res);
         let result = JSON.parse(JSON.stringify(res[0]));
         // passwords not matching
         if (result['password'] !== authPassword) {
@@ -45,6 +46,7 @@ exports.authRegister = function(authName, authPassword, callback) {
     let sqlCountName = `SELECT COUNT(name) FROM users WHERE name = "${authName}";`;
     con.query(sqlCountName, function(err, res) {
         if (err) throw err;
+        console.log(res);
         let names = JSON.parse(JSON.stringify(res[0]));
         // console.log(names['COUNT(name)']);
         if (names['COUNT(name)'] !== 0) {
@@ -57,6 +59,7 @@ exports.authRegister = function(authName, authPassword, callback) {
     let sqlLength = `SELECT COUNT(*) FROM users`;
     con.query(sqlLength, function(err, res) {
         if (err) throw err;
+        console.log(res);
         let users = JSON.parse(JSON.stringify(res[0]));
         // console.log(users['COUNT(*)']);
         let currAmount = users['COUNT(*)'];
@@ -87,6 +90,4 @@ exports.authLogout = function(token, userId) {
             });
         }
     });
-
-
 };

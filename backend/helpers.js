@@ -3,6 +3,7 @@ exports.tokenCheck = function tokenCheck(token, con, id, callback) {
     const sqlGetToken = `SELECT user_token FROM users WHERE user_id = "${id}"`;
     con.query(sqlGetToken, function(err, res) {
         if (err) throw err;
+        console.log(res);
         let result = JSON.parse(JSON.stringify(res[0]));
         console.log('data token ' + result.user_token);
         console.log('pass through token ' + token);

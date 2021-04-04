@@ -13,7 +13,6 @@ exports.userProfile = function(token, userId, callback) {
             con.query(sqlUserProfile, function(err, res) {
                 if (err) throw err;
                 let result = JSON.parse(JSON.stringify(res[0]));
-                console.log(result);
                 return callback(result.name, result.src);
             })
         }

@@ -20,6 +20,7 @@ let timetableUpdate = timetableFunctions.timetableUpdate;
 let timetableDelete = timetableFunctions.timetableDelete;
 let timetableAddEvent = timetableFunctions.timetableAddEvent;
 let timetableDeleteEvent = timetableFunctions.timetableDeleteEvent;
+let timetableEvents = timetableFunctions.timetableEvents;
 
 let eventFunctions = require('./backend/event');
 let eventCreate = eventFunctions.eventCreate;
@@ -86,6 +87,11 @@ app.get('/timetable', (req, res) => {
   });
 });
 
+app.get('/timetable/events', (req, res) => {
+  timetableEvents(req.query.token, req.query.userId, req.query.timetableId, async function (result) {
+    res.json(result);
+  })
+})
 
 // event functions
 app.post('/event', (req, res) => {
@@ -111,9 +117,15 @@ app.get('/user', (req,res) => {
 
 // authRegister('third', 'third');
 // authLogin('third', 'third');
+// authRegister('fifth', 'fifth');
+// authLogin('fifth', 'fifth');
+// timetableInfo('f9l6YIjWk8ZDTr0xEmzmYkgbwfZ8IYfi', '1', '38428304');
 // userProfile('FXRdZLMEt7ljPtVDjLWIBn76NWFfZXpG', '2)');
 // timetableCreate('KhORiIVOo7nucPpnLLpfZhFtA7BK2Xle', '1', 'testTimetable');
-eventCreate('KhORiIVOo7nucPpnLLpfZhFtA7BK2Xle', '1', 'event1', 'wednesday', '7', '9', 'work', 'code stuff');
+// eventCreate('f9l6YIjWk8ZDTr0xEmzmYkgbwfZ8IYfi', '1', 'event4', '2', '16', '22', '2', 'commerce');
+// timetableAddEvent('f9l6YIjWk8ZDTr0xEmzmYkgbwfZ8IYfi', '1', '38428304', '99412559');
+
+timetableEvents('UgoIQ9dYpAiYlNQ2B3hZ3vb9j2N8VeLo', '1', '38428304');
 
 // user functions
 // userProfile();

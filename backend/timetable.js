@@ -32,7 +32,25 @@ exports.timetableInfo = function(token, userId, timetableId, callback) {
                 if (err) throw err;
                 let result = JSON.parse(JSON.stringify(res[0]));
                 console.log(result);
-                return callback(result.title, result.event_id);
+                return callback(result.title);
+            })
+        }
+    });
+};
+
+exports.timetableEvents = function(token, userId, timetableId, callback) {
+    tokenCheck(token, con, userId, async function(result) {
+        if (!result) {
+            console.log('Invalid token');
+            return;
+        } else {
+            let sqlTimetableInfo = `SELECT * FROM events WHERE timetable_id = "${timetableId}"`;
+            con.query(sqlTimetableInfo, function(err, res) {
+                if (err) throw err;
+                // console.log(res);
+                let result = JSON.parse(JSON.stringify(res));
+                console.log(result);
+                return callback(result);
             })
         }
     });
@@ -57,13 +75,15 @@ exports.timetableAddEvent = function(token, userId, timetableId, eventId) {
             return;
         } else {
             const query = `UPDATE events
-            SET timetable_id = ${timetableId}
-            WHERE event_id = ${eventId};`
+            SET timetable_id = "${timetableId}"
+            WHERE event_id = "${eventId}"`;
+            console.log(query);
             con.query(query, function(err, res) {
                 if (err) throw err;
-                let result = JSON.parse(JSON.stringify(res[0]));
-                console.log(result);
-                // return callback(result.title, result.event_id);
+                // console.log('here');
+                let result = JSON.parse(JSON.stringify(res));
+                // console.log(result);
+                return callback(result.title, result.event_id);
             })
         }
     });
