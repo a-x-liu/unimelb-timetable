@@ -78,7 +78,7 @@ export default function (props) {
         }
         fetch('https://apple-surprise-39339.herokuapp.com/timetable/addEvent', options2);
         console.log(v);
-        alert("Please wait at least one minute for your data to appear.");
+        alert("Please wait at least one minute for your data to appear. Please note that your data is rendered below the timetable.");
         setTimeout(v, 10000);
         close();
         
