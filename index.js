@@ -94,9 +94,11 @@ app.post('/timetable', (req, res) => {
 
 app.get('/timetable', (req, res) => {
   // console.log(req);
-  timetableInfo(req.query.token, req.query.userId, req.query.timetableId, async function(result) {
-    res.json(result);
-  });
+  timetableInfo(req.query.token, req.query.userId, req.query.timetableId);
+});
+
+app.put('/timetable', (req, res) => {
+  timetableUpdate(req.body.token, req.body.userId, req.body.timetableId, req.body.newTitle);
 });
 
 app.get('/timetable/events', (req, res) => {
@@ -161,6 +163,7 @@ app.put('/user', (req, res) => {
 // timetableEvents('UgoIQ9dYpAiYlNQ2B3hZ3vb9j2N8VeLo', '1', '38428304');
 // userChartTotalTime('gd3YIhQlJkETtW5PzxUlW6iLiVyMnVhd', '1', '38428304');
 
+// timetableUpdate('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', '9318884', 'newTimetable');
 // user functions
 // userProfile();
 // userUpdate();

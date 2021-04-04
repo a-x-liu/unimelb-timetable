@@ -56,8 +56,20 @@ exports.timetableEvents = function(token, userId, timetableId, callback) {
     });
 };
 
-exports.timetableUpdate = function(token, userId, timetableId, newTitle) {
+exports.timetableUpdate = function(token, userId, timetableId, newTitle, callback) {
     // console.log('timetable update');
+    tokenCheck(token, con, userId, async function(result) {
+        if (!result) {
+            console.log('Invalid token');
+            return;
+        } else {
+            let sqlTimetableUpdate = `UPDATE timetables SET title = "${newTitle}" WHERE timetable_id = "${timetableId}";`;
+            con.query(sqlTimetableUpdate, function(err, res) {
+                if (err) throw err;
+            })
+        }
+    });
+
 };
 
 exports.timetableDelete = function(token, userId, userID, timetableId) {
