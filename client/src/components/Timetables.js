@@ -166,6 +166,9 @@ const useStyles = makeStyles((theme) => ({
                             <Link to="/profile" style={{ textDecoration: 'none', color:'black' }} >
                                 <MenuItem onClick={handleClose}>Profile</MenuItem>
                             </Link>
+                            <Link to="/update" style={{ textDecoration: 'none', color:'black' }} >
+                                <MenuItem onClick={handleClose}>Update Profile</MenuItem>
+                            </Link>
                             <Link to="/" style={{ textDecoration: 'none', color:'red' }}>
                                 <MenuItem onClick={handleClose}>Logout</MenuItem>
                             </Link>
