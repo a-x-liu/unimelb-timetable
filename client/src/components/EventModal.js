@@ -79,7 +79,7 @@ export default function (props) {
         fetch('http://localhost:5000/timetable/addEvent', options2);
         console.log(v);
         alert("Please wait at least one minute for your data to appear.");
-        setTimeout(v, 50000);
+        setTimeout(v, 5000);
         close();
         
         
