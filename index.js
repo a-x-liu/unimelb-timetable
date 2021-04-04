@@ -101,8 +101,17 @@ app.get('/event', (req, res) => {
   });
 });
 
-// authRegister('testname', 'testpassword');
-// authLogin('testname', 'testpassword');
+
+// user functions
+app.get('/user', (req,res) => {
+  userProfile(req.query.token, req.query.userId, async function(result) {
+    res.json(result);
+  })
+})
+
+// authRegister('second', 'second');
+// authLogin('second', 'second');
+// userProfile('FXRdZLMEt7ljPtVDjLWIBn76NWFfZXpG', '2)');
 // timetableCreate('KhORiIVOo7nucPpnLLpfZhFtA7BK2Xle', '1', 'testTimetable');
 
 
