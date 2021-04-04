@@ -55,7 +55,41 @@ export default function () {
     const classes = useStyles();
     const [auth, setAuth] = React.useState(true);
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [dataInfo, setData] = React.useState([]);
+    const [lineInfo, setLine] = React.useState([]);
     const open = Boolean(anchorEl);
+
+    async function load2() {
+        const options = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }
+        const res = await fetch('http://localhost:5000/timetable/chart/totalTime?token=' + localStorage.getItem('userToken') + '&timetableId=' + localStorage.getItem('timetableId') + "&userId=" + localStorage.getItem("userId"), options);
+        const data = await res.json();
+        setLine(data)
+        console.log(data);
+    }
+
+    async function load() {
+        const options = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }
+        const res = await fetch('http://localhost:5000/timetable/chart/percentTime?token=' + localStorage.getItem('userToken') + '&timetableId=' + localStorage.getItem('timetableId') + "&userId=" + localStorage.getItem("userId"), options);
+        const data = await res.json();
+        setData(data)
+
+        console.log(data);
+    }
+
+    React.useEffect(async () => {
+        load();
+        load2();
+    }, []);
   
     const handleChange = (event) => {
       setAuth(event.target.checked);
@@ -125,8 +159,8 @@ export default function () {
              </div>
             
             <div id="profileInfo">
-                <Avatar alt="Terence H" src="/static/images/avatar/1.jpg" style={{ alignSelf: 'center' }} />
-                <h1 id="username">Terence Huang</h1>
+                <Avatar alt={localStorage.getItem("name")} src="/static/images/avatar/1.jpg" style={{ alignSelf: 'center' }} />
+                <h1 id="username">{localStorage.getItem("name")}</h1>
             </div>
             
             <div id="statistics">  
@@ -134,13 +168,12 @@ export default function () {
                     <h3 className="graphTitle">Time Distribution</h3>
                     <VictoryPie
                         data={[
-                            { x: "Cats", y: 50 },
-                            { x: "Dogs", y: 25 },
-                            { x: "Birds", y: 25 },
-                            { x: "Birds", y: 25 }
+                            { x: "Study", y: dataInfo[0] },
+                            { x: "Work", y: dataInfo[1] },
+                            { x: "Leisure", y: dataInfo[2] },
+                            { x: "Other", y: dataInfo[3] }
                         ]}
-                        colorScale={["#E2BEF1", "#C6F8E5", "#F9DED7"]}
-
+                        colorScale={["#E2BEF1", "#C6F8E5", "#F9DED7", "#BAC1EC"]}
                     />
                 </div>
                 <div id="barGraph" className="graphs">
@@ -152,22 +185,22 @@ export default function () {
                         <VictoryBar
                             style={{ data: { fill: "#FFB480" } }}
                             data={[
-                                { experiment: "trial 1", expected: 3.75, actual: 3.21 },
-                                { experiment: "trial 2", expected: 3.75, actual: 3.38 },
-                                { experiment: "trial 3", expected: 3.75, actual: 2.05 },
-                                { experiment: "trial 4", expected: 3.75, actual: 3.71 }
+                                { types: "Study", time: lineInfo[0] },
+                                { types: "Work", time: lineInfo[1] },
+                                { types: "Leisure", time: lineInfo[2] },
+                                { types: "Other", time: lineInfo[3] }
                             ]}
-                            x="experiment"
-                            y={(d) => (d.actual / d.expected) * 100}
+                            x= "types"
+                            y={(d) =>d.time}
                         />
                         <VictoryAxis
-                            label="experiment"
+                            
                             style={{
                             axisLabel: { padding: 30 }
                             }}
                         />
                         <VictoryAxis dependentAxis
-                            label="percent yield"
+                            
                             style={{
                             axisLabel: { padding: 40 }
                             }}

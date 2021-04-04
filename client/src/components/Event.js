@@ -51,9 +51,9 @@ export default function (props) {
     //     console.log('we are entering use event effect: ', id, title, day, start, end, description, type);
     //     console.log(document.getElementById(day+"-"+start));
     //     window.addEventListener('resize', handleResize);
-    //     handleResize();
+    //     setTimeout(handleResize(), 10000);
     //     return () => window.removeEventListener('resize', handleResize);
-    // }, [eventState]);
+    // }, []);
         
 
     return (

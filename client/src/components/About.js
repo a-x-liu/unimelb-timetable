@@ -111,7 +111,7 @@ const useStyles = makeStyles((theme) => ({
             </AppBar>
             <div id="aboutDescription">
               <h1 id="aboutTitle">About Us</h1>            
-              <p>We are the boydem and we are not skunked</p>
+              <p id="about">We are Prolvan Innovation, and our timetabling application was inspired by the issues we face while we work from home in this pandemic.</p>
             </div>
             
          </div>

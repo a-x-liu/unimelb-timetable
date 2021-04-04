@@ -261,3 +261,7 @@ body {
 .eventTimes {
   width: 100%;
 }
+
+#about{
+  font-size: 3vh;
+}

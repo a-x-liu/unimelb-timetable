@@ -4,7 +4,6 @@ import Register from './components/Register';
 import Profile from './components/Profile';
 import Timetables from './components/Timetables';
 import About from './components/About';
-import Update from './components/Update'
 import { AnimatePresence,  motion } from "framer-motion";
 
 import {
@@ -60,6 +59,7 @@ function LoginSection () {
     const password = document.getElementById('loginPassword').value;
 
     console.log(username, password);
+    window.localStorage.setItem("name", username);
     const data = {
       username: username,
       password: password
@@ -78,10 +78,23 @@ function LoginSection () {
     const resdata = await res.json();
     console.log("hello there " + resdata);
     window.localStorage.setItem("userToken", resdata);
-    
+
+    const options3 = {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+    }
+ 
+    const res3 = await fetch(`http://localhost:5000/tokenToId?token=${localStorage.getItem("userToken")}`, options3);
+    const resdata3 = await res3.json();
+    window.localStorage.setItem("userId", resdata3);
+
+
     const data2 = {
       'token': window.localStorage.getItem("userToken"),
-      'userId': 1,
+      'userId': localStorage.getItem("userId"),
       'timetableTitle': 'Test',
       
     }
@@ -172,9 +185,6 @@ function App () {
       <Router>
       <AnimatePresence>
       <Switch>
-      <Route path="/update">
-          <Update />
-        </Route>
         <Route path="/timetables">
           <Timetables />
         </Route>

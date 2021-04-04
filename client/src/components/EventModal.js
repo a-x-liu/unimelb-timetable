@@ -14,7 +14,13 @@ import Button from '@material-ui/core/Button';
 
 
 export default function (props) {
-    
+    const [value, setValue] = React.useState();
+
+    const handleChange = (event) => {
+        console.log("we are changing the radio " + event.target.value);
+        setValue(event.target.value);
+        console.log(value);
+    };
     const {v, open, close} = props;
 
     async function submit() {
@@ -24,31 +30,20 @@ export default function (props) {
         const day = document.getElementById("eventDay").value;
         const start = document.getElementById("eventStart").value;
         const end = document.getElementById("eventEnd").value;
-        const type = document.getElementsByName("position")[0].value;
+        const type = value;
         const desc = document.getElementById("eventDescription").value;
 
         const data = {
             'token': token,
-            'userId': 1,
+            'userId': localStorage.getItem("userId"),
             'eventTitle': title,
             'eventDay': day,
             'eventStartTime': start,
             'eventEndTime': end,
-            'eventType': 1,
+            'eventType': type,
             'description': desc
         }
         console.log(data, JSON.stringify(data));
-
-        // const data = {
-        //     'token': token,
-        //     'userId': 1,
-        //     'eventTitle': "NEW EVENT PLEASE WORK",
-        //     'eventDay': 3,
-        //     'eventStart': 4,
-        //     'eventEnd': 5,
-        //     'eventType': "Study",
-        //     'eventDescription': "PLEASENOSKUNKERY"
-        // }
 
         const options = {
             method: 'POST',
@@ -66,7 +61,7 @@ export default function (props) {
 
         const data2 = {
             'token': token,
-            'userId': 1,
+            'userId': localStorage.getItem("userId"),
             'timetableId': window.localStorage.getItem('timetableId'),
             'eventId': window.localStorage.getItem("eventId"),
         }
@@ -83,8 +78,11 @@ export default function (props) {
         }
         fetch('http://localhost:5000/timetable/addEvent', options2);
         console.log(v);
+        alert("Please wait at least one minute for your data to appear.");
         setTimeout(v, 50000);
         close();
+        
+        
     }
 
     return (
@@ -138,27 +136,27 @@ export default function (props) {
                 <div>
                 <FormControl component="fieldset">
         <FormLabel component="legend">labelPlacement</FormLabel>
-        <RadioGroup row aria-label="position" name="position" defaultValue="top">
+        <RadioGroup row aria-label="position" name="position" value={value} onChange={handleChange}>
             <FormControlLabel
-            value={0}
+            value='0'
             control={<Radio color="primary" />}
             label="Study"
             labelPlacement="bottom"
             />
             <FormControlLabel
-            value={1}
+            value='1'
             control={<Radio color="primary" />}
             label="Work"
             labelPlacement="bottom"
             />
             <FormControlLabel
-            value={2}
+            value='2'
             control={<Radio color="primary" />}
             label="Leisure"
             labelPlacement="bottom"
             />
             <FormControlLabel
-            value={3}
+            value='3'
             control={<Radio color="primary" />}
             label="Other"
             labelPlacement="bottom"

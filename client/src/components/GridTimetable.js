@@ -220,7 +220,7 @@ export default function () {
 
         console.log("passing in:" + localStorage.getItem('userToken'));
 
-        const res = await fetch('http://localhost:5000/timetable/events?token=' + localStorage.getItem('userToken') + '&timetableId=' + localStorage.getItem('timetableId') + "&userId=" + 1, options);
+        const res = await fetch('http://localhost:5000/timetable/events?token=' + localStorage.getItem('userToken') + '&timetableId=' + localStorage.getItem('timetableId') + "&userId=" + localStorage.getItem("userId"), options);
         const data = await res.json();
         console.log(data);
         updateState(data);    

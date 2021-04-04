@@ -105,7 +105,7 @@ const useStyles = makeStyles((theme) => ({
       // const userId = window.localStorage.getItem("userId");
 
       const data = {
-        userid: 0,
+        userid: localStorage.getItem("userId"),
         userToken: userToken
       }
 
@@ -166,9 +166,6 @@ const useStyles = makeStyles((theme) => ({
                             <Link to="/profile" style={{ textDecoration: 'none', color:'black' }} >
                                 <MenuItem onClick={handleClose}>Profile</MenuItem>
                             </Link>
-                            <Link to="/update" style={{ textDecoration: 'none', color:'black' }} >
-                                <MenuItem onClick={handleClose}>Update Profile</MenuItem>
-                            </Link>
                             <Link to="/" style={{ textDecoration: 'none', color:'red' }}>
                                 <MenuItem onClick={handleClose}>Logout</MenuItem>
                             </Link>
@@ -197,18 +194,9 @@ const useStyles = makeStyles((theme) => ({
               </Toolbar>
               <div className={classes2.drawerContainer}>
                 <List>
-                  {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                  {['My Timetables', 'Messages', 'Friend List'].map((text, index) => (
                     <ListItem button key={text}>
-                      <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                      <ListItemText primary={text} />
-                    </ListItem>
-                  ))}
-                </List>
-                <Divider />
-                <List>
-                  {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem button key={text}>
-                      <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                      <ListItemIcon>{index % 3 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                       <ListItemText primary={text} />
                     </ListItem>
                   ))}
@@ -221,16 +209,6 @@ const useStyles = makeStyles((theme) => ({
               <GridTimetable></GridTimetable>
             </div>
          </div>
-         <Fab color="secondary" aria-label="add" id="addTableButton" 
-                style={{
-                margin: '50px',
-                position:'absolute', 
-                bottom: '0',
-                right: '0'
-                 }}
-            >
-            <AddIcon />
-        </Fab>
     </motion.div>
   );
 }
