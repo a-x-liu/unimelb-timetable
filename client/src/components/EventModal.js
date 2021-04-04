@@ -93,7 +93,7 @@ export default function (props) {
                 Cancel
             </Button>
             <Button onClick={close} variant="contained" color="primary">
-                Create Timetable
+                Create Event
             </Button>
             </DialogActions>
         </Dialog>
