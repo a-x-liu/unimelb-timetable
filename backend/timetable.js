@@ -44,6 +44,9 @@ exports.timetableUpdate = function(token, userId, timetableId, newTitle) {
 
 exports.timetableDelete = function(token, userId, userID, timetableId) {
     // console.log('timetable delete');
+    const delete1 = `DELETE FROM events WHERE timetable_id = 'timetable_id;`
+    
+    const delete2= `DELETE FROM timetables WHERE timetable_id = 'timetable_id;`
 };
 
 exports.timetableAddEvent = function(token, userId, timetableId, eventId) {
@@ -53,7 +56,15 @@ exports.timetableAddEvent = function(token, userId, timetableId, eventId) {
             console.log('Invalid token');
             return;
         } else {
-            
+            const query = `UPDATE events
+            SET timetable_id = ${timetableId}
+            WHERE event_id = ${eventId};`
+            con.query(query, function(err, res) {
+                if (err) throw err;
+                let result = JSON.parse(JSON.stringify(res[0]));
+                console.log(result);
+                // return callback(result.title, result.event_id);
+            })
         }
     });
 };
