@@ -101,6 +101,10 @@ app.put('/timetable', (req, res) => {
   timetableUpdate(req.body.token, req.body.userId, req.body.timetableId, req.body.newTitle);
 });
 
+app.delete('/timetable', (req, res) => {
+  timetableDelete(req.query.token, req.query.userId, req.query.timetableId);
+});
+
 app.get('/timetable/events', (req, res) => {
   timetableEvents(req.query.token, req.query.userId, req.query.timetableId, async function (result) {
     res.json(result);
@@ -155,15 +159,17 @@ app.put('/user', (req, res) => {
 // authLogin('fifth', 'fifth');
 // timetableInfo('f9l6YIjWk8ZDTr0xEmzmYkgbwfZ8IYfi', '1', '38428304');
 // userProfile('FXRdZLMEt7ljPtVDjLWIBn76NWFfZXpG', '2)');
-// timetableCreate('KhORiIVOo7nucPpnLLpfZhFtA7BK2Xle', '1', 'testTimetable');
-// eventCreate('f9l6YIjWk8ZDTr0xEmzmYkgbwfZ8IYfi', '1', 'event4', '2', '16', '22', '2', 'commerce');
-// timetableAddEvent('f9l6YIjWk8ZDTr0xEmzmYkgbwfZ8IYfi', '1', '38428304', '99412559');
-
+// timetableCreate('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', 'WOWOWOW');
+// eventCreate('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', 'event5', '2', '16', '22', '2', 'commerce');
+// timetableAddEvent('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', '91679784', '55488246');
+// timetableDelete('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', )
 // userUpdate('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', null, 'newFifthpasstwo', 'newFifthSrctwo');
 // timetableEvents('UgoIQ9dYpAiYlNQ2B3hZ3vb9j2N8VeLo', '1', '38428304');
 // userChartTotalTime('gd3YIhQlJkETtW5PzxUlW6iLiVyMnVhd', '1', '38428304');
 
 // timetableUpdate('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', '9318884', 'newTimetable');
+// timetableDelete('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', '56045661');
+
 // user functions
 // userProfile();
 // userUpdate();
