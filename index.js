@@ -17,7 +17,6 @@ let timetableInfo = timetableFunctions.timetableInfo;
 let timetableUpdate = timetableFunctions.timetableUpdate;
 let timetableDelete = timetableFunctions.timetableDelete;
 let timetableAddEvent = timetableFunctions.timetableAddEvent;
-let timetableDeleteEvent = timetableFunctions.timetableDeleteEvent;
 let timetableEvents = timetableFunctions.timetableEvents;
 let timetablePercentTime = timetableFunctions.timetablePercentTime;
 let timetableTotalTime = timetableFunctions.timetableTotalTime;
@@ -105,6 +104,10 @@ app.delete('/timetable', (req, res) => {
   timetableDelete(req.query.token, req.query.userId, req.query.timetableId);
 });
 
+app.post('/timetable/addEvent', (req, res) => {
+  timetableAddEvent(req.body.token, req.body.userId, req.body.timetableId, req.body.eventId);
+});
+
 app.get('/timetable/events', (req, res) => {
   timetableEvents(req.query.token, req.query.userId, req.query.timetableId, async function (result) {
     res.json(result);
@@ -140,6 +143,14 @@ app.get('/event', (req, res) => {
   });
 });
 
+app.put('/event', (req, res) => {
+  eventUpdate(req.body.token, req.body.userId, req.body.eventId, req.body.eventTitle, req.body.eventDay, req.body.eventStartTime, req.body.eventEndTime, req.body.eventType, req.body.eventDescription);
+})
+
+app.delete('/event', (req, res) => {
+  eventDelete(req.query.token, req.query.userId, req.query.eventId);
+})
+
 //////////////////////////////////
 // user functions
 //////////////////////////////////
@@ -169,30 +180,9 @@ app.put('/user', (req, res) => {
 
 // timetableUpdate('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', '9318884', 'newTimetable');
 // timetableDelete('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', '56045661');
+// timetableDeleteEvent('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', '71636513');
 
-// user functions
-// userProfile();
-// userUpdate();
-// userChartPercentTime();
-// userChartTotalTime();
-
-
-// timetable functions
-// timetableCreate();
-// timetableInfo();
-// timetableUpdate();
-// timetableDelete();
-// timetableAddEvent();
-// timetableDeleteEvent();
-
-
-// event functions
-// eventCreate();
-// eventInfo();
-// eventUpdate();
-// eventDelete();
-
-
+// eventUpdate('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', '82548946', 'new Title', '4', '7', null, '1', 'new desc');
 
 
 

@@ -106,14 +106,9 @@ exports.timetableAddEvent = function(token, userId, timetableId, eventId) {
                 // console.log('here');
                 let result = JSON.parse(JSON.stringify(res));
                 // console.log(result);
-                return callback(result.title, result.event_id);
             })
         }
     });
-};
-
-exports.timetableDeleteEvent = function(token, timetableId, eventId) {
-    // console.log('timetable delete event');
 };
 
 exports.timetablePercentTime = function(token, userId, timetableId, callback) {
