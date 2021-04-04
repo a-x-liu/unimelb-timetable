@@ -73,7 +73,6 @@ app.post('/auth/register', (req, res) => {
   });
 });
 
-
 // timetable functions
 app.post('/timetable', (req, res) => {
   timetableCreate(req.body.token, req.body.userId, req.body.timetableTitle, async function(result) {
@@ -102,12 +101,18 @@ app.get('/event', (req, res) => {
   });
 });
 
-// eventCreate('898xdkUDSxP0zKUxWHtLGVt9kZbbz8VO', '2', 'eventTitle', 'eventDate', '0', '10', 'work', 'description');
-// eventInfo('898xdkUDSxP0zKUxWHtLGVt9kZbbz8VO', '2', '77733977');
-// authLogin('second', 'second');
-// timetableCreate('898xdkUDSxP0zKUxWHtLGVt9kZbbz8VO', 2, 'testTitle');
 
-// authLogout('PEBxaAdsQnOlCccUFsHWJJU14FvKcv2H', 0);
+// user functions
+app.get('/user', (req,res) => {
+  userProfile(req.query.token, req.query.userId, async function(result) {
+    res.json(result);
+  })
+})
+
+// authRegister('second', 'second');
+// authLogin('second', 'second');
+// userProfile('FXRdZLMEt7ljPtVDjLWIBn76NWFfZXpG', '2)');
+// timetableCreate('KhORiIVOo7nucPpnLLpfZhFtA7BK2Xle', '1', 'testTimetable');
 
 
 // user functions

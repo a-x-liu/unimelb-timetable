@@ -11,7 +11,7 @@ exports.timetableCreate = function(token, userId, timetableTitle, callback) {
             return;
         } else {
             let timetableId = generateId(8);
-            let sqlTimetable = `INSERT INTO timetables (timetable_id, title) VALUES ("${timetableId}", "${timetableTitle}")`
+            let sqlTimetable = `INSERT INTO timetables (timetable_id, title, user_id) VALUES ("${timetableId}", "${timetableTitle}", "${userId}")`
             con.query(sqlTimetable, function(err, res) {
                 if (err) throw err;
                 return callback(timetableId);
