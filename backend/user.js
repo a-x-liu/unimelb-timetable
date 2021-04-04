@@ -50,10 +50,3 @@ exports.userUpdate = function(token, userId, userName, userPassword, userSrc) {
     });
 };
 
-exports.userChartPercentTime = function(token, userId, timetableId) {
-    // console.log('user chart percent');
-};
-
-exports.userChartTotalTime = function(token, userId, timetableId) {
-    // console.log('user chart total');
-};

@@ -10,8 +10,6 @@ let authLogout = authFunctions.authLogout;
 let userFunctions = require('./backend/user');
 let userProfile = userFunctions.userProfile;
 let userUpdate = userFunctions.userUpdate;
-let userChartPercentTime = userFunctions.userChartPercentTime;
-let userChartTotalTime = userFunctions.userChartTotalTime;
 
 let timetableFunctions = require('./backend/timetable');
 let timetableCreate = timetableFunctions.timetableCreate;
@@ -21,6 +19,8 @@ let timetableDelete = timetableFunctions.timetableDelete;
 let timetableAddEvent = timetableFunctions.timetableAddEvent;
 let timetableDeleteEvent = timetableFunctions.timetableDeleteEvent;
 let timetableEvents = timetableFunctions.timetableEvents;
+let timetablePercentTime = timetableFunctions.timetablePercentTime;
+let timetableTotalTime = timetableFunctions.timetableTotalTime;
 
 let eventFunctions = require('./backend/event');
 let eventCreate = eventFunctions.eventCreate;
@@ -63,7 +63,9 @@ app.get('/test', (req, res) => {
 //   tokenToId
 // });
 
+//////////////////////////////////
 // auth functions
+//////////////////////////////////
 app.post('/auth/login', (req, res) => {
   authLogin(req.body.username, req.body.password, async function(result) {
     res.json(result);
@@ -80,7 +82,10 @@ app.post('/auth/register', (req, res) => {
   });
 });
 
+//////////////////////////////////
 // timetable functions
+//////////////////////////////////
+
 app.post('/timetable', (req, res) => {
   timetableCreate(req.body.token, req.body.userId, req.body.timetableTitle, async function(result) {
     res.json(result);
@@ -97,10 +102,25 @@ app.get('/timetable', (req, res) => {
 app.get('/timetable/events', (req, res) => {
   timetableEvents(req.query.token, req.query.userId, req.query.timetableId, async function (result) {
     res.json(result);
-  })
-})
+  });
+});
 
+app.get('/timetable/chart/percentTime', (req, res) => {
+  timetablePercentTime(req.query.token, req.query.userId, req.query.timetableId, async function (result) {
+    res.json(result);
+  });
+});
+
+app.get('/timetable/chart/totalTime', (req,res) => {
+  timetableTotalTime(req.query.token, req.query.userId, req.query.timetableId, async function (result) {
+    res.json(result);
+  });
+});
+
+
+//////////////////////////////////
 // event functions
+//////////////////////////////////
 app.post('/event', (req, res) => {
   eventCreate(req.body.token, req.body.userId, req.body.eventTitle, req.body.eventDay, req.body.eventStartTime, req.body.eventEndTime, req.body.eventType, req.body.description, async function(result) {
     res.json(result);
@@ -114,8 +134,9 @@ app.get('/event', (req, res) => {
   });
 });
 
-
+//////////////////////////////////
 // user functions
+//////////////////////////////////
 app.get('/user', (req,res) => {
   userProfile(req.query.token, req.query.userId, async function(result) {
     res.json(result);
@@ -138,6 +159,7 @@ app.put('/user', (req, res) => {
 
 // userUpdate('2jZPNqCsGpZsJKo62Q423Sxnv6uTMhEJ', '6', null, 'newFifthpasstwo', 'newFifthSrctwo');
 // timetableEvents('UgoIQ9dYpAiYlNQ2B3hZ3vb9j2N8VeLo', '1', '38428304');
+// userChartTotalTime('gd3YIhQlJkETtW5PzxUlW6iLiVyMnVhd', '1', '38428304');
 
 // user functions
 // userProfile();
