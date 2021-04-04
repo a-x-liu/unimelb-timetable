@@ -123,7 +123,7 @@ export default function () {
              </div>
             
             <div id="profileInfo">
-                <Avatar alt="Jin WK" src="/static/images/avatar/1.jpg" style={{ alignSelf: 'center' }} />
+                <Avatar alt="Terence H" src="/static/images/avatar/1.jpg" style={{ alignSelf: 'center' }} />
                 <h1 id="username">Terence Huang</h1>
             </div>
             

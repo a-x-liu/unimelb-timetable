@@ -4,7 +4,6 @@ import Register from './components/Register';
 import Profile from './components/Profile';
 import Timetables from './components/Timetables';
 import About from './components/About';
-import LogoBlue from './assets/LogoBlue.png';
 import { AnimatePresence,  motion } from "framer-motion";
 
 import {

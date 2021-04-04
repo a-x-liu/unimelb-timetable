@@ -17,9 +17,13 @@ import Menu from '@material-ui/core/Menu';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import GridTimetable from './GridTimetable';
-import LogoBlue from '../assets/LogoBlue.png';
+import Drawer from './Drawer'
 import Slide from '@material-ui/core/Slide';
-import { AnimatePresence,  motion } from "framer-motion";
+import { motion } from "framer-motion";
+import InputLabel from '@material-ui/core/InputLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 import {
     BrowserRouter as Router,
@@ -28,6 +32,7 @@ import {
     Link,
 } from 'react-router-dom';
 import Timetable from './GridTimetable';
+import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     abRoot: {
@@ -47,6 +52,8 @@ const useStyles = makeStyles((theme) => ({
     const [auth, setAuth] = React.useState(true);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
+    const [age, setAge] = React.useState('');
+    const [drawerOpen, setdrawerOpen] = React.useState(false);
   
     const handleChange = (event) => {
       setAuth(event.target.checked);
@@ -59,63 +66,13 @@ const useStyles = makeStyles((theme) => ({
     const handleClose = () => {
       setAnchorEl(null);
     };
+    
+
     return (
         <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}> 
          <div className={classes.root}>
-    
-            <AppBar position="static" style={{boxShadow:'none'}}>
-                <Toolbar>
-                <Link to="/timetables" style={{ color: 'black', textDecoration: 'none', flex:1 }}>
-                    <Typography variant="h6" className={classes.title} style={{ fontWeight: "bold"}}>
-                        Prolvan Timetabling
-                    </Typography>
-                    
-                </Link>
-                <Link to="/about" style={{ color: 'black', textDecoration: 'none'}}>
-                  <Button variant="h9" className={classes.title} style={{ maxWidth: '150px' }}>
-                      <span className="menuElement">About us</span>
-                  </Button>
-                </Link>
-                {auth && (
-                    <div>
-                    
-                    <IconButton
-                        aria-label="account of current user"
-                        aria-controls="menu-appbar"
-                        aria-haspopup="true"
-                        onClick={handleMenu}
-                        color="black"
-                    >
-                        <AccountCircle />
-                    </IconButton>
+         <Drawer></Drawer>
 
-                    <Menu
-                        id="menu-appbar"
-                        anchorEl={anchorEl}
-                        anchorOrigin={{
-                        vertical: 'top',
-                        horizontal: 'right',
-                        }}
-                        keepMounted
-                        transformOrigin={{
-                        vertical: 'top',
-                        horizontal: 'right',
-                        }}
-                        open={open}
-                        onClose={handleClose}
-                    >
-                        <Link to="/profile" style={{ textDecoration: 'none', color:'black' }}>
-                            <MenuItem onClick={handleClose}>Profile</MenuItem>
-                        </Link>
-                        <Link to="/" style={{ textDecoration: 'none', color:'red' }}>
-                            <MenuItem onClick={handleClose}>Logout</MenuItem>
-                        </Link>
-                    </Menu>
-                    
-                    </div>
-                )}
-                </Toolbar>
-            </AppBar>
             <h1>Timetables</h1>            
             <p>These are your timetables!</p>
             <GridTimetable></GridTimetable>
@@ -128,6 +85,7 @@ const useStyles = makeStyles((theme) => ({
                 right: '0'
                  }}
             >
+
             <AddIcon />
         </Fab>
     </motion.div>
