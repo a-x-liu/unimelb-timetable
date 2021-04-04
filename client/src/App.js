@@ -80,9 +80,9 @@ function LoginSection () {
     window.localStorage.setItem("userToken", resdata);
     
     const data2 = {
-      token: window.localStorage.getItem("userToken"),
-      userId: 1,
-      timetableTitle: 'Test',
+      'token': window.localStorage.getItem("userToken"),
+      'userId': 1,
+      'timetableTitle': 'Test',
       
     }
     const options2 = {
@@ -93,7 +93,7 @@ function LoginSection () {
       },
       body: JSON.stringify(data2)
     }
-    const res2 = await fetch('http://localhost:5000/timetable/create', options2);
+    const res2 = await fetch('http://localhost:5000/timetable', options2);
     const resdata2 = await res2.json();
     window.localStorage.setItem("timetableId", resdata2);
     

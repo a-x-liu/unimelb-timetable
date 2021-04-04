@@ -132,6 +132,7 @@ app.get('/timetable/chart/totalTime', (req,res) => {
 // event functions
 //////////////////////////////////
 app.post('/event', (req, res) => {
+  console.log(req.body);
   eventCreate(req.body.token, req.body.userId, req.body.eventTitle, req.body.eventDay, req.body.eventStartTime, req.body.eventEndTime, req.body.eventType, req.body.description, async function(result) {
     res.json(result);
   });

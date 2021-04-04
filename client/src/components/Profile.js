@@ -134,14 +134,14 @@ export default function () {
                         data={[
                             { x: "Cats", y: 50 },
                             { x: "Dogs", y: 25 },
-                            { x: "Birds", y: 250 }
+                            { x: "Birds", y: 25 }
                         ]}
                         colorScale={["#E2BEF1", "#C6F8E5", "#F9DED7"]}
 
                     />
                 </div>
                 <div id="barGraph" className="graphs">
-                    <h3 className="graphTitle">Total Hours</h3>
+                    <h3 className="graphTitle">Total Hours Spent</h3>
                     <VictoryChart
                     theme={VictoryTheme.material}
                     domainPadding={10}
