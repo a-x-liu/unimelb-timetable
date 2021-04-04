@@ -17,7 +17,7 @@ exports.tokenCheck = function tokenCheck(token, con, id, callback) {
 }
 
 // function to get user id from a token
-exports.convertTokenToId = function convertTokenToId(token, con, callback) {
+exports.tokenToId = function tokenToId(token, con, callback) {
     const getId = `SELECT user_id FROM users WHERE user_token = "${token}"`;
     con.query(getId, function(err, res) {
         if (err) throw err;

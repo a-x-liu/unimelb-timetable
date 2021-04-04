@@ -1,6 +1,8 @@
+
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const con = require('./backend/database');
 
 let authFunctions = require('./backend/auth');
 let authLogin = authFunctions.authLogin;
@@ -27,8 +29,8 @@ let eventInfo = eventFunctions.eventInfo;
 let eventUpdate = eventFunctions.eventUpdate;
 let eventDelete = eventFunctions.eventDelete;
 
-// let helperFunctions = require('./backend/helpers');
-// let tokenToId = helperFunctions.convertTokenToId;
+let helperFunctions = require('./backend/helpers');
+let tokenToId = helperFunctions.tokenToId;
 
 const app = express();
 app.use(cors());
@@ -63,11 +65,20 @@ app.get('/test', (req, res) => {
 // });
 
 //////////////////////////////////
+// token to id function
+//////////////////////////////////
+app.get('/tokenToId', (req, res) => {
+  tokenToId(req.query.token, con, async function(result) {
+    console.log(result);
+    res.json(result);
+  });
+})
+
+//////////////////////////////////
 // auth functions
 //////////////////////////////////
 app.post('/auth/login', (req, res) => {
   authLogin(req.body.username, req.body.password, async function(result) {
-    console.log('BACKEND BACKEND');
     res.json(result);
   });
 });
