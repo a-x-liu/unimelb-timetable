@@ -103,8 +103,27 @@ exports.timetablePercentTime = function(token, userId, timetableId, callback) {
             let sqlEventData = `SELECT * FROM events WHERE timetable_id = "${timetableId}"`;
             con.query(sqlEventData, function(err, res) {
                 if (err) throw err;
-                let result = JSON.parse(JSON.stringify(res[0]));
-                return callback(result.name, result.src);
+                // console.log(res);
+                let result = JSON.parse(JSON.stringify(res));
+                console.log(result);
+                let types = [0,0,0,0];
+                let totalHours = 0;
+                for (let i = 0; i < result.length; i++) {
+                    let type = result[i].type;
+                    let hours = result[i].time_end - result[i].time_start;
+
+                    // only accepting 4 types right now
+                    if (type < 4) {
+                        types[type] += hours;
+                        totalHours += hours;
+                    }    
+                }
+                let percentTypes = [0,0,0,0];
+                for (let i = 0; i < result.length; i++) {
+                    percentTypes[i] = types[i] / totalHours;
+                }
+                console.log(percentTypes);
+                return callback(percentTypes);
             })
         }
     });
