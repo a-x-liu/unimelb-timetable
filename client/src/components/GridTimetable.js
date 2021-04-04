@@ -8,9 +8,10 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
     timetableBox: {
-        position: 'absolute',
+        // position: 'absolute',
         width: '80%',
         height: '65%',
+        maxHeight: '900px',
         overflowX: 'hidden',
         overflowY: 'scroll',
         marginLeft: '5vh',
@@ -270,7 +271,7 @@ export default function () {
     }, []);
 
     return (
-        <div>
+        <div className="eventTimes">
             <div className={classes.timetableBox}>
                 <LabelRow eventState={eventState} updateEvent={load}></LabelRow>
                 <TimeCells></TimeCells>
