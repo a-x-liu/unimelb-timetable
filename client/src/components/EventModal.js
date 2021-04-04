@@ -105,7 +105,7 @@ export default function (props) {
                 autoFocus
                 margin="dense"
                 id="eventDay"
-                label="Day"
+                label="Day (Monday - Sunday : 1 - 7)"
                 type="email"
                 fullWidth
                 />
@@ -113,7 +113,7 @@ export default function (props) {
                 autoFocus
                 margin="dense"
                 id="eventStart"
-                label="Start time"
+                label="Start time (0 - 23, integers only)"
                 type="email"
                 fullWidth
                 />
@@ -121,7 +121,7 @@ export default function (props) {
                 autoFocus
                 margin="dense"
                 id="eventEnd"
-                label="End time"
+                label="End time (0 - 23, integers only)"
                 type="email"
                 fullWidth
                 />
