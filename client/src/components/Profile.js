@@ -48,6 +48,8 @@ const useStyles = makeStyles((theme) => ({
       flexGrow: 1,
     },
   }));
+
+  
   
 export default function () {
     const classes = useStyles();
@@ -134,6 +136,7 @@ export default function () {
                         data={[
                             { x: "Cats", y: 50 },
                             { x: "Dogs", y: 25 },
+                            { x: "Birds", y: 25 },
                             { x: "Birds", y: 25 }
                         ]}
                         colorScale={["#E2BEF1", "#C6F8E5", "#F9DED7"]}
