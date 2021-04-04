@@ -14,7 +14,16 @@ import Button from '@material-ui/core/Button';
 
 
 export default function (props) {
+    
     const {v, open, close} = props;
+
+    async function submit() {
+        const token = window.localStorage.getItem("userToken");
+        
+
+
+
+    }
 
     return (
             <Dialog open={v} onClose={close} aria-labelledby="form-dialog-title">
@@ -92,8 +101,9 @@ export default function (props) {
             <Button onClick={close} variant="contained" color="secondary">
                 Cancel
             </Button>
-            <Button onClick={close} variant="contained" color="primary">
-                Create Event
+
+            <Button onClick={submit} variant="contained" color="primary">
+                Create Timetable
             </Button>
             </DialogActions>
         </Dialog>
