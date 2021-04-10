@@ -27,4 +27,4 @@
 - Overall, we think we did well for our capability and have learnt a lot for future Hackathons.
 
 ## Try it out!
-- [apple-surprise-39339.herokuapp.com](https://apple-surprise-39339.herokuapp.com/)
+- Timetabling Web Application(https://apple-surprise-39339.herokuapp.com/)
