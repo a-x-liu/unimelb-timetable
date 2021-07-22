@@ -28,3 +28,6 @@
 
 ## Try it out!
 - [Timetabling Web Application](https://apple-surprise-39339.herokuapp.com/)
+
+## Demo video
+- [Demo](https://www.youtube.com/watch?v=5E3bRGeDscY)
